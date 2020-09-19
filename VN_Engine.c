@@ -1,6 +1,17 @@
-//---------------------------------------------------//
-//|| VNES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES ||
-//---------------------------------------------------//
+//                        ___    
+//                      //|||\\  
+//                      /|^,^|\\ 
+//                      ||\-/||| 
+//                      \\| |||| 
+//                     /|-----|\ 
+//                    |\|  &  |/|
+//                    | |     | |
+//                    | |     | |
+//-----------------------------------------------------\\
+//||						       ||
+//|| ~VNES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES~ ||
+//||						       ||
+//-----------------------------------------------------//
 
 
 #include <stdlib.h>
@@ -41,6 +52,35 @@ const char PALETTE[32] = {
   0x0d,0x27,0x2a	// sprite palette 3
 };
 
+//----Enums
+enum LABELS {START, l_OUI, l_NON, LABELS_COUNT};
+
+enum GAME_STATE {GAME, DIAL, CHOICE};
+
+enum DIAL_T {N='n', C='c', F='f', A='a'};
+
+//----Struct definition
+typedef struct Passage Passage;
+struct Passage
+{
+    enum DIAL_T t; //Type de passage
+    char c[63];//Content, en génrale le texte affiché
+};
+
+typedef struct Choix Choix;
+struct Choix
+{
+    char txt[20]; //Texte du choix
+    int jmp;	  //Indice du label de destination
+};
+
+//-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
+
+Passage SCRPT[] = {
+  {N,"Bienvenue dans VNES !"},
+  {A,"On est pas bien là ?"}
+};
+
 // setup PPU and tables
 void setup_graphics() {
   // clear sprites
@@ -53,8 +93,8 @@ void main(void)
 {
   setup_graphics();
   // draw message  
-  vram_adr(NTADR_A(2,2));
-  vram_write("HELLO, WORLD!", 12);
+  vram_adr(NTADR_A(2,20));
+  vram_write(SCRPT[0].c, 63);
   // enable rendering
   ppu_on_all();
   // infinite loop
@@ -62,3 +102,29 @@ void main(void)
     
   }
 }
+
+
+//                                        ___
+//                                   _.--'...`-._
+//                                .-'..::::::::..\
+//                               /.:::::::::::::::\
+//                              |.::::::::::::::::.|
+//                             .-..::::::::::::::::|
+//           ugh?              | |\.\\|-\|//- \::::|
+//                             | | `-\ 'D| 'D|||)::|
+//                             | |  ||   <    ||::.|
+//                             | |  |'        |/:__'
+//                             | |   \\_ `  _  /=__=-
+//                             | |      `--'   |::.`-.
+//                             | |      _|    _/\::::\
+//                             |_|     /#|  _/##'  \:|
+//                             |-|    |/|__/\#'     \'
+//                             | |  _/       //      \
+//                             | |_/________//        |
+//                             | |YO _ PIYO   \|/     |
+//                             | |  <^|        `      |
+//                             | |  (__)       |      |
+//                            _|_|\_`'-'      ,'      |
+//                           ( __ 7 \--       |      .'
+//--------------------------------------------------------
+// ASCII: http://www.ascii-art.de/ascii/ab/anime.txt
