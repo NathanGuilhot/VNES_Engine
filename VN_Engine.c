@@ -41,21 +41,23 @@
 const char PALETTE[32] = { 
   0x03,			// screen color
 
-  0x11,0x30,0x27,0x0,	// background palette 0
-  0x1c,0x20,0x2c,0x0,	// background palette 1
-  0x00,0x10,0x20,0x0,	// background palette 2
-  0x06,0x16,0x26,0x0,   // background palette 3
+  0x0D,0x25,0x30,0x00,	// background palette 0
+  0x1C,0x20,0x2C,0x00,	// background palette 1
+  0x00,0x10,0x20,0x00,	// background palette 2
+  0x06,0x16,0x26,0x00,   // background palette 3
 
-  0x16,0x35,0x24,0x0,	// sprite palette 0
-  0x00,0x37,0x25,0x0,	// sprite palette 1
-  0x0d,0x2d,0x3a,0x0,	// sprite palette 2
-  0x0d,0x27,0x2a	// sprite palette 3
+  0x16,0x35,0x24,0x00,	// sprite palette 0
+  0x00,0x37,0x25,0x00,	// sprite palette 1
+  0x0D,0x2D,0x3A,0x00,	// sprite palette 2
+  0x0D,0x27,0x2A	// sprite palette 3
 };
 
 //----Enums
 enum LABELS {START, l_OUI, l_NON, LABELS_COUNT};
+enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE};
+enum GAME_STATE game_st=DIAL;
 
 enum DIAL_T {N='n', C='c', F='f', A='a'};
 
@@ -74,11 +76,18 @@ struct Choix
     int jmp;	  //Indice du label de destination
 };
 
+//-----Variables utiles
+
+unsigned int index = 0; //index dans le label en cours
+unsigned char cursor = 0;
+
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
 
 Passage SCRPT[] = {
-  {N,"Bienvenue dans VNES !"},
-  {A,"On est pas bien là ?"}
+  {N,"Bienvenue dans VNES ! *"},
+  {A,"On est pas bien là ?"},
+  {A,"On est pas bien là ? 1"},
+  {A,"On est pas bien là ? 2"}
 };
 
 // setup PPU and tables
@@ -89,16 +98,40 @@ void setup_graphics() {
   pal_all(PALETTE);
 }
 
+//function
+void draw_dial(){
+  
+  
+}
+
+//-----------------------
+//---- MAIN LOOP !
+
 void main(void)
 {
   setup_graphics();
-  // draw message  
+  // draw message
+  
   vram_adr(NTADR_A(2,20));
   vram_write(SCRPT[0].c, 63);
+  
   // enable rendering
   ppu_on_all();
   // infinite loop
   while(1) {
+    ppu_wait_frame();
+    vrambuf_put(NTADR_A(2,2),"neh",3);
+    
+    if (game_st==GAME){
+      
+    }
+    else if (game_st==DIAL){
+      
+    }
+    else if (game_st==CHOICE){
+      
+    }
+    
     
   }
 }
