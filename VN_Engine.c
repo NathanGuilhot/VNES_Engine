@@ -53,7 +53,7 @@ const char PALETTE[32] = {
 };
 
 //----Enums
-enum LABELS {START, l_OUI, l_NON, /*LABELS_COUNT*/};
+enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
 enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
@@ -81,6 +81,8 @@ struct Choix
 unsigned int index = 0; //index dans le label en cours
 unsigned char cursor = 1;
 
+unsigned char choice_sel=0;
+
 char pad; //controller
 bool a_pressed = false;
 
@@ -90,8 +92,16 @@ Passage SCRPT[] = {
   {N,"Bienvenue dans VNES ! *"},
   {A,"On est pas bien la ?"},
   {A,"Ce beau ciel bleu, cette mer    calme..."},
-  {A,"Je pourrais rester assise       ici toute ma vie !"}
+  {A,"Je pourrais rester assise       ici toute ma vie ! Oui oui !"},
+  {A,"Qu'est-ce que tu en penses ?"},
+  {C,"0"}, //Jump au début du dialogue
+  {A,"Super ! Je suis contente :)"},
+  {J,"9"},
+  {A,"Oh dommage, on rentre ? :("},
+  {N, "fin"}
 };
+
+//Choix CHOIX[]={}
 
 // setup PPU and tables
 void setup_graphics() {
@@ -108,20 +118,48 @@ void clrscr() {
   vram_adr(0x0);
   ppu_on_bg();
 }
+
+void clrtxt(){ //???
+  vrambuf_clear();
+  ppu_off();
+  vram_adr(NTADR_A(2,24));
+  vram_fill(0, 64);
+  //vram_adr(0x0);
+  ppu_on_bg();
+}
 //function
-void draw_dial(){
-  vrambuf_put(NTADR_A(2,20),SCRPT[index].c, cursor);
+void draw_dial(){  
+  if (SCRPT[index].t==N){
+    vrambuf_put(NTADR_A(2,24),SCRPT[index].c, cursor);
+  }
+  else if (SCRPT[index].t==A){ //Prototype, trouver un moyen d'etre propre
+    //Swap palette
+    vrambuf_put(NTADR_A(2,24),SCRPT[index].c, cursor);
+    vrambuf_put(NTADR_A(13,22),"_ANGE_", 6);
+  }
 }
 
 void updt_dial(){
+  //Managing les passages spéciaux
+  if (SCRPT[index].t==C){
+    clrscr();
+    game_st=CHOICE;
+  }
+  else if (SCRPT[index].t==J){
+    index = atoi(SCRPT[index].c);
+  }
+  
   if (pad&PAD_A){
     if (!a_pressed){
-    if (index<3){
+    if (index<5){
   	index+=1;
       	cursor=1;
       	//Remplace txt par blanc, trouver une autre soluce
-      	vrambuf_put(NTADR_A(2,20),"                                                                ", 64);
-      	
+      	// clrscr ?
+      	vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
+      	//clrtxt();
+      	//clrscr();
+      
       	a_pressed=true;
     }
     else{
@@ -135,6 +173,8 @@ void updt_dial(){
   }
   
   if (cursor<63) cursor++;
+  
+  
 }
 
 void draw_game(){
