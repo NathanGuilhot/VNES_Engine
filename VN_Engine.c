@@ -1,3 +1,7 @@
+//---------------------------------------------------//
+//|| VNES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES ||
+//---------------------------------------------------//
+
 
 #include <stdlib.h>
 #include <string.h>
@@ -55,5 +59,6 @@ void main(void)
   ppu_on_all();
   // infinite loop
   while(1) {
+    
   }
 }
