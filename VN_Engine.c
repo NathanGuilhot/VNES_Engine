@@ -53,13 +53,13 @@ const char PALETTE[32] = {
 };
 
 //----Enums
-enum LABELS {START, l_OUI, l_NON, LABELS_COUNT};
+enum LABELS {START, l_OUI, l_NON, /*LABELS_COUNT*/};
 enum LABELS labl=START;
 
-enum GAME_STATE {GAME, DIAL, CHOICE};
+enum GAME_STATE {GAME, DIAL, CHOICE, END};
 enum GAME_STATE game_st=DIAL;
 
-enum DIAL_T {N='n', C='c', F='f', A='a'};
+enum DIAL_T {N='n', C='c', F='f', J='j', A='a'};
 
 //----Struct definition
 typedef struct Passage Passage;
@@ -79,15 +79,18 @@ struct Choix
 //-----Variables utiles
 
 unsigned int index = 0; //index dans le label en cours
-unsigned char cursor = 0;
+unsigned char cursor = 1;
+
+char pad; //controller
+bool a_pressed = false;
 
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
 
 Passage SCRPT[] = {
   {N,"Bienvenue dans VNES ! *"},
-  {A,"On est pas bien là ?"},
-  {A,"On est pas bien là ? 1"},
-  {A,"On est pas bien là ? 2"}
+  {A,"On est pas bien la ?"},
+  {A,"Ce beau ciel bleu, cette mer    calme..."},
+  {A,"Je pourrais rester assise       ici toute ma vie !"}
 };
 
 // setup PPU and tables
@@ -97,10 +100,58 @@ void setup_graphics() {
   // set palette colors
   pal_all(PALETTE);
 }
-
+void clrscr() {
+  vrambuf_clear();
+  ppu_off();
+  vram_adr(0x2000);
+  vram_fill(0, 32*28);
+  vram_adr(0x0);
+  ppu_on_bg();
+}
 //function
 void draw_dial(){
+  vrambuf_put(NTADR_A(2,20),SCRPT[index].c, cursor);
+}
+
+void updt_dial(){
+  if (pad&PAD_A){
+    if (!a_pressed){
+    if (index<3){
+  	index+=1;
+      	cursor=1;
+      	//Remplace txt par blanc, trouver une autre soluce
+      	vrambuf_put(NTADR_A(2,20),"                                                                ", 64);
+      	
+      	a_pressed=true;
+    }
+    else{
+     game_st=END;
+     clrscr();
+    }
+  }
+  }
+  else{
+   a_pressed=false; 
+  }
   
+  if (cursor<63) cursor++;
+}
+
+void draw_game(){
+  
+}
+
+void updt_game(){
+  if (pad&PAD_A){
+    if (!a_pressed){
+      game_st=DIAL;
+      
+      a_pressed=true;
+    }
+  }
+  else{
+   a_pressed=false; 
+  }
   
 }
 
@@ -110,27 +161,40 @@ void draw_dial(){
 void main(void)
 {
   setup_graphics();
-  // draw message
-  
-  vram_adr(NTADR_A(2,20));
-  vram_write(SCRPT[0].c, 63);
+
   
   // enable rendering
   ppu_on_all();
   // infinite loop
   while(1) {
     ppu_wait_frame();
-    vrambuf_put(NTADR_A(2,2),"neh",3);
+    vrambuf_clear();
+    set_vram_update(updbuf);
+    
+    pad = pad_poll(0); //pad j1
     
     if (game_st==GAME){
+      vrambuf_put(NTADR_A(2,2),"Game",4);
+      draw_game();
+      updt_game();
       
     }
     else if (game_st==DIAL){
+      vrambuf_put(NTADR_A(2,2),"Dialogue",8);
+      draw_dial();
+      updt_dial();
       
     }
     else if (game_st==CHOICE){
+      vrambuf_put(NTADR_A(2,2),"Choice",6);
       
     }
+    else if (game_st==END){
+      vrambuf_put(NTADR_A(2,2),"END",3);
+      
+    }
+    
+    
     
     
   }
