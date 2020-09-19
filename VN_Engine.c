@@ -19,6 +19,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 // include NESLIB header
 #include "neslib.h"
@@ -37,11 +38,19 @@
 #include "vrambuf.h"
 //#link "vrambuf.c"
 
+const char ANGESPR[] = { 
+  0x80,0x80,0x81,0x82,0x83,0x84,0x85,0x80,
+  0x80,0x80,0x86,0x87,0x87,0x88,0x89,0x80,
+  0x06,0x16,0x26,0x00,0x0D,0x31,0x30,0x00
+  
+};
+
+
 /*{pal:"nes",layout:"nes"}*/
 const char PALETTE[32] = { 
   0x03,			// screen color
 
-  0x0D,0x25,0x30,0x00,	// background palette 0
+  0x0D,0x31,0x30,0x00,	// background palette 0
   0x1C,0x20,0x2C,0x00,	// background palette 1
   0x00,0x10,0x20,0x00,	// background palette 2
   0x06,0x16,0x26,0x00,   // background palette 3
@@ -57,7 +66,7 @@ enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
 enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=GAME;
+enum GAME_STATE game_st=DIAL;
 
 enum DIAL_T {N='n', C='c', F='f', J='j', A='a'};
 
@@ -85,6 +94,8 @@ unsigned char choice_sel=0;
 
 char pad; //controller
 bool a_pressed = false;
+
+int i;
 
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
 
@@ -204,7 +215,16 @@ void updt_game(){
 void main(void)
 {
   setup_graphics();
-
+  
+  vram_adr(NTADR_A(0,3));
+  vram_fill(1, 32*19);
+  
+  vram_adr(NTADR_A(0,5));
+  
+  for (i=0;i<sizeof(ANGESPR)/8; i++){
+    vram_adr(NTADR_A(0,5+i));
+    vram_write(ANGESPR,8);
+  }
   
   // enable rendering
   ppu_on_all();
