@@ -57,7 +57,7 @@ enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
 enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=DIAL;
+enum GAME_STATE game_st=GAME;
 
 enum DIAL_T {N='n', C='c', F='f', J='j', A='a'};
 
@@ -177,7 +177,10 @@ void updt_dial(){
   
 }
 
+char oam_id;
 void draw_game(){
+  //oam_spr(x,y,sprite,color,id)
+  oam_id = oam_spr(40, 40, 21, 1, oam_id);
   
 }
 
@@ -185,7 +188,7 @@ void updt_game(){
   if (pad&PAD_A){
     if (!a_pressed){
       game_st=DIAL;
-      
+      clrscr();
       a_pressed=true;
     }
   }
@@ -207,6 +210,7 @@ void main(void)
   ppu_on_all();
   // infinite loop
   while(1) {
+    oam_id = 0;
     ppu_wait_frame();
     vrambuf_clear();
     set_vram_update(updbuf);
