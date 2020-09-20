@@ -110,7 +110,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 5; //index dans le label en cours
+unsigned int index = 0; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -178,6 +178,27 @@ void clrtxt(){ //???
   //vram_adr(0x0);
   ppu_on_bg();
 }
+void draw_ange(){
+  vrambuf_clear();
+  ppu_off();
+  
+  vram_adr(NTADR_A(0,20));
+  vram_fill(1, 32*1);
+  
+  for (i=0;i<sizeof(ANGESPR)/8; i++){ //Draw_Ange
+    vram_adr(NTADR_A(11,5+i));
+    vram_write(ANGESPR[i],8);
+  }
+  
+  ppu_on_all();
+}
+
+void draw_ange_face(){
+  oam_id = oam_spr(112, 67, 211, 2, oam_id);
+  oam_id = oam_spr(130, 67, 211, 2, oam_id);
+  oam_id = oam_spr(122, 73, 212, 2, oam_id);
+}
+
 //function
 void draw_dial(){  
   if (SCRPT[index].t==N){
@@ -190,9 +211,8 @@ void draw_dial(){
   }
   
   //Dessin du visage
-  oam_id = oam_spr(112, 67, 211, 2, oam_id);
-  oam_id = oam_spr(130, 67, 211, 2, oam_id);
-  oam_id = oam_spr(122, 73, 212, 2, oam_id);
+  draw_ange_face();
+  
 }
 
 void updt_dial(){
@@ -207,14 +227,12 @@ void updt_dial(){
   
   if (pad&PAD_A){
     if (!a_pressed){
-    if (index<8){
+    if (index<9){
   	index+=1;
       	cursor=1;
       	//Remplace txt par blanc, trouver une autre soluce
       	// clrscr ?
       	vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
-      	//clrtxt();
-      	//clrscr();
       
       	a_pressed=true;
     }
@@ -230,7 +248,6 @@ void updt_dial(){
   
   if (cursor<63) cursor++;
   
-  
 }
 
 void draw_game(){
@@ -244,6 +261,7 @@ void updt_game(){
     if (!a_pressed){
       game_st=DIAL;
       clrscr();
+      draw_ange();
       a_pressed=true;
     }
   }
@@ -269,6 +287,7 @@ void updt_choice(){
       index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel]].jmp;
       game_st=DIAL;
       clrscr();
+      draw_ange();
       a_pressed=true;
       choice_sel=0;
     }
@@ -314,14 +333,8 @@ void updt_end(){
 void main(void)
 {
   setup_graphics();
+  draw_ange();
   
-  vram_adr(NTADR_A(0,20));
-  vram_fill(1, 32*1);
-  
-  for (i=0;i<sizeof(ANGESPR)/8; i++){ //Draw_Ange
-    vram_adr(NTADR_A(11,5+i));
-    vram_write(ANGESPR[i],8);
-  }
   
   // enable rendering
   ppu_on_all();
