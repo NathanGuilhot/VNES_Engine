@@ -58,7 +58,7 @@ const char ANGESPR[][8] = {
   {0x00,0x00,0xC9,0xCA,0xCB,0x03,0xCC,0x00},
   
   {0x00,0x00,0x00,0xCD,0x03,0xCE,0xCF,0x00},
-  {0x00,0x00,0x00,0xD0,0x03,0xD1,0x03,0xD2}
+  {0x01,0x01,0x00,0xD0,0x03,0xD1,0x03,0xD2}
   
 };
 
@@ -95,22 +95,34 @@ struct Passage
     char c[63];//Content, en génrale le texte affiché
 };
 
-typedef struct Choix Choix;
-struct Choix
+typedef struct Choice Choice;
+struct Choice
 {
-    char txt[20]; //Texte du choix
+    char txt[30]; //Texte du choix
     int jmp;	  //Indice du label de destination
 };
 
+//typedef struct ChoiceCollection ChoiceCollection;
+//struct ChoiceCollection{
+//    int cc[2]; //liste des indice du tableau des Choice
+  		//Pour le moment limité à 2 choix
+//};
+
 //-----Variables utiles
 
-unsigned int index = 0; //index dans le label en cours
+unsigned int index = 5; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
 
 char pad; //controller
-bool a_pressed = false;
+bool a_pressed = false; //1
+bool b_pressed = false; //B
+bool u_pressed = false; //UP
+bool d_pressed = false; //DOWN
+bool l_pressed = false;	//LEFT (gauche)
+bool r_pressed = false; //RIGHT (drouate)
+
 
 int i;
 char oam_id;
@@ -121,13 +133,23 @@ Passage SCRPT[] = {
   {N,"Bienvenue dans VNES ! *"},
   {A,"On est pas bien la ?"},
   {A,"Ce beau ciel bleu, cette mer    calme..."},
-  {A,"Je pourrais rester assise       ici toute ma vie ! Oui oui !"},
+  {A,"Je pourrais rester assise       ici toute ma vie !"},
   {A,"Qu'est-ce que tu en penses ?"},
   {C,"0"}, //Jump au début du dialogue
   {A,"Super ! Je suis contente :)"},
   {J,"9"},
   {A,"Oh dommage, on rentre ? :("},
   {N, "fin"}
+};
+
+Choice ListeChoix[]= {
+  {"J'aime beaucoup !",6},
+  {"Les mouettes m'ennuient",8}
+};
+
+int ChoiceCollection[][2] = {
+  {0,1}
+  
 };
 
 //Choix CHOIX[]={}
@@ -167,9 +189,10 @@ void draw_dial(){
     vrambuf_put(NTADR_A(13,22),"_ANGE_", 6);
   }
   
-  oam_id = oam_spr(120, 75, 211, 2, oam_id);
-  oam_id = oam_spr(138, 75, 211, 2, oam_id);
-  oam_id = oam_spr(129, 81, 212, 2, oam_id);
+  //Dessin du visage
+  oam_id = oam_spr(112, 67, 211, 2, oam_id);
+  oam_id = oam_spr(130, 67, 211, 2, oam_id);
+  oam_id = oam_spr(122, 73, 212, 2, oam_id);
 }
 
 void updt_dial(){
@@ -184,7 +207,7 @@ void updt_dial(){
   
   if (pad&PAD_A){
     if (!a_pressed){
-    if (index<5){
+    if (index<8){
   	index+=1;
       	cursor=1;
       	//Remplace txt par blanc, trouver une autre soluce
@@ -227,7 +250,62 @@ void updt_game(){
   else{
    a_pressed=false; 
   }
+}
+
+void draw_choice(){
+  vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel),">",2);
+  oam_id = oam_spr(112, 67, 211, 2, oam_id);
   
+  for (i=0;i<2;i++){
+  	vrambuf_put(NTADR_A(3,15+i+i),ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt, 30);
+  }
+  
+}
+
+void updt_choice(){
+  //Selection
+  if (pad&PAD_A){
+    if (!a_pressed){
+      index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel]].jmp;
+      game_st=DIAL;
+      clrscr();
+      a_pressed=true;
+      choice_sel=0;
+    }
+  } else{a_pressed=false;}
+  
+  //Up & Down
+  if (pad&PAD_DOWN){
+    if (!d_pressed){
+      if (choice_sel<1){vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel)," ",2);choice_sel++;}
+      d_pressed=true;
+    }
+  } else{d_pressed=false;}
+  if (pad&PAD_UP){
+    if (!u_pressed){
+      if (choice_sel>0){vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel)," ",2);choice_sel--;}
+      u_pressed=true;
+    }
+  } else{u_pressed=false;}
+  
+}
+
+void draw_end(){
+  
+}
+
+void updt_end(){
+ if (pad&PAD_A){
+    if (!a_pressed){
+      game_st=GAME;
+      clrscr();
+      a_pressed=true;
+      index=0;
+    }
+  }
+  else{
+   a_pressed=false; 
+  } 
 }
 
 //-----------------------
@@ -237,11 +315,11 @@ void main(void)
 {
   setup_graphics();
   
-  vram_adr(NTADR_A(0,3));
-  vram_fill(1, 32*19);
+  vram_adr(NTADR_A(0,20));
+  vram_fill(1, 32*1);
   
-  for (i=0;i<sizeof(ANGESPR)/8; i++){
-    vram_adr(NTADR_A(12,6+i));
+  for (i=0;i<sizeof(ANGESPR)/8; i++){ //Draw_Ange
+    vram_adr(NTADR_A(11,5+i));
     vram_write(ANGESPR[i],8);
   }
   
@@ -270,10 +348,14 @@ void main(void)
     }
     else if (game_st==CHOICE){
       vrambuf_put(NTADR_A(2,2),"Choice",6);
+      draw_choice();
+      updt_choice();
       
     }
     else if (game_st==END){
       vrambuf_put(NTADR_A(2,2),"END",3);
+      draw_end();
+      updt_end();
       
     }
     
