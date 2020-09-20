@@ -65,9 +65,9 @@ const char ANGESPR[][8] = {
 
 /*{pal:"nes",layout:"nes"}*/
 const char PALETTE[32] = { 
-  0x03,			// screen color
+  0x0C,			// screen color
 
-  0x0D,0x31,0x30,0x00,	// background palette 0
+  0x0D,0x15,0x30,0x00,	// background palette 0
   0x1C,0x20,0x2C,0x00,	// background palette 1
   0x00,0x10,0x20,0x00,	// background palette 2
   0x06,0x16,0x26,0x00,   // background palette 3
@@ -79,11 +79,12 @@ const char PALETTE[32] = {
 };
 
 //----Enums
+
 enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
 enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=DIAL;
+enum GAME_STATE game_st=GAME;
 
 enum DIAL_T {N='n', C='c', F='f', J='j', A='a'};
 
@@ -122,6 +123,8 @@ bool u_pressed = false; //UP
 bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
+
+bool debug_mode = false;
 
 
 int i;
@@ -227,20 +230,20 @@ void updt_dial(){
   
   if (pad&PAD_A){
     if (!a_pressed){
-    if (index<9){
-  	index+=1;
-      	cursor=1;
-      	//Remplace txt par blanc, trouver une autre soluce
-      	// clrscr ?
-      	vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
-      
-      	a_pressed=true;
+      a_pressed=true;
+      if (index<9){
+        index+=1;
+        cursor=1;
+        //Remplace txt par blanc, trouver une autre soluce
+        // clrscr ?
+        vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
+
+      }
+      else{
+        game_st=END;
+        clrscr();
+      }
     }
-    else{
-     game_st=END;
-     clrscr();
-    }
-  }
   }
   else{
    a_pressed=false; 
@@ -248,11 +251,17 @@ void updt_dial(){
   
   if (cursor<63) cursor++;
   
+  //delay(2);//Si tu veux ralentir la vitesse du texte
+  
 }
 
 void draw_game(){
   //oam_spr(x,y,sprite,color,id)
-  oam_id = oam_spr(40, 40, 8, 1, oam_id);
+  //oam_id = oam_spr(40, 40, 8, 1, oam_id);
+  vrambuf_put(NTADR_A(3,10),"~PROMENADE AU BORD DE MER~",26);
+  vrambuf_put(NTADR_A(4,11),"________________________",24);
+  vrambuf_put(NTADR_A(7,13),"une demo pour VNES",18);
+  vrambuf_put(NTADR_A(18,26),"2020 NIGHTEN",12);
   
 }
 
@@ -310,6 +319,9 @@ void updt_choice(){
 }
 
 void draw_end(){
+  vrambuf_put(NTADR_A(12,10),"GAMEOVER",8);
+    vrambuf_put(NTADR_A(6,20),"merci d'avoir joue !",20);
+
   
 }
 
@@ -333,7 +345,6 @@ void updt_end(){
 void main(void)
 {
   setup_graphics();
-  draw_ange();
   
   
   // enable rendering
@@ -348,25 +359,25 @@ void main(void)
     pad = pad_poll(0); //pad j1
     
     if (game_st==GAME){
-      vrambuf_put(NTADR_A(2,2),"Game",4);
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Game",4);}
       draw_game();
       updt_game();
       
     }
     else if (game_st==DIAL){
-      vrambuf_put(NTADR_A(2,2),"Dialogue",8);
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Dialogue",8);}
       draw_dial();
       updt_dial();
       
     }
     else if (game_st==CHOICE){
-      vrambuf_put(NTADR_A(2,2),"Choice",6);
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Choice",6);}
       draw_choice();
       updt_choice();
       
     }
     else if (game_st==END){
-      vrambuf_put(NTADR_A(2,2),"END",3);
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"END",3);}
       draw_end();
       updt_end();
       
