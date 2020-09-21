@@ -86,7 +86,8 @@ enum LABELS labl=START;
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
 enum GAME_STATE game_st=GAME;
 
-enum DIAL_T {N='n', C='c', F='f', J='j', A='a'};
+enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
+,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/};
 
 //----Struct definition
 typedef struct Passage Passage;
@@ -117,7 +118,7 @@ unsigned char cursor = 1;
 unsigned char choice_sel=0;
 
 char pad; //controller
-bool a_pressed = false; //1
+bool a_pressed = false; //A
 bool b_pressed = false; //B
 bool u_pressed = false; //UP
 bool d_pressed = false; //DOWN
@@ -126,33 +127,52 @@ bool r_pressed = false; //RIGHT (drouate)
 
 bool debug_mode = false;
 
-
 int i;
 char oam_id;
 
+//face var
+char sprEl=0; //gauche
+char sprEr=0;//Drouate
+char sprM=1;//Bouche
+
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:
+
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
 
-Passage SCRPT[] = {
+const Passage SCRPT[] = {
+  {SWPEL,"0"},
+  {SWPER,"0"},
+  {SWPM,"1"},
   {N,"Bienvenue dans VNES ! *"},
   {A,"On est pas bien la ?"},
+  {SWPEL,"3"},
+  {SWPER,"3"},
   {A,"Ce beau ciel bleu, cette mer    calme..."},
   {A,"Je pourrais rester assise       ici toute ma vie !"},
+  {SWPEL,"0"},
+  {SWPER,"0"},
   {A,"Qu'est-ce que tu en penses ?"},
   {C,"0"}, //Jump au début du dialogue
+  {SWPM,"4"},
   {A,"Super ! Je suis contente :)"},
-  {J,"9"},
+  {J,"18"},
+  {SWPM,"3"},
   {A,"Oh dommage, on rentre ? :("},
   {N, "fin"}
 };
 
-Choice ListeChoix[]= {
-  {"J'aime beaucoup !",6},
-  {"Les mouettes m'ennuient",8}
+const Choice ListeChoix[]= {
+  {"J'aime beaucoup !",13},
+  {"Les mouettes m'ennuient",16}
 };
 
-int ChoiceCollection[][2] = {
+const int ChoiceCollection[][2] = {
   {0,1}
-  
+};
+
+const char expr[]={ //liste des expressions
+  211	,212	,213	,214	,215	, 216
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:
 };
 
 //Choix CHOIX[]={}
@@ -197,15 +217,18 @@ void draw_ange(){
 }
 
 void draw_ange_face(){
-  oam_id = oam_spr(112, 67, 211, 2, oam_id);
-  oam_id = oam_spr(130, 67, 211, 2, oam_id);
-  oam_id = oam_spr(122, 73, 212, 2, oam_id);
+  oam_id = oam_spr(112, 67, expr[sprEl], 2, oam_id);
+  oam_id = oam_spr(130, 67, expr[sprEr], 2, oam_id);
+  
+  oam_id = oam_spr(122, 73, expr[sprM], 2, oam_id);
+  
 }
 
 //function
 void draw_dial(){  
   if (SCRPT[index].t==N){
     vrambuf_put(NTADR_A(2,24),SCRPT[index].c, cursor);
+    vrambuf_put(NTADR_A(13,22),"      ", 6);
   }
   else if (SCRPT[index].t==A){ //Prototype, trouver un moyen d'etre propre
     //Swap palette
@@ -227,11 +250,24 @@ void updt_dial(){
   else if (SCRPT[index].t==J){
     index = atoi(SCRPT[index].c);
   }
+  else if (SCRPT[index].t==SWPEL){
+    sprEl=atoi(SCRPT[index].c);
+    index++;
+  }
+  else if (SCRPT[index].t==SWPER){
+    sprEr=atoi(SCRPT[index].c);
+    index++;
+  }
+  else if (SCRPT[index].t==SWPM){
+    sprM=atoi(SCRPT[index].c);
+    index++;
+  }
   
   if (pad&PAD_A){
     if (!a_pressed){
       a_pressed=true;
-      if (index<9){
+      //if (cursor<63){cursor=63;}//Affiche tout le texte; pas top parce que taille varibale pour le texte
+      if (index<sizeof(SCRPT)/sizeof(SCRPT[0])-1){
         index+=1;
         cursor=1;
         //Remplace txt par blanc, trouver une autre soluce
@@ -241,6 +277,7 @@ void updt_dial(){
       }
       else{
         game_st=END;
+        cursor=0;
         clrscr();
       }
     }
@@ -319,8 +356,9 @@ void updt_choice(){
 }
 
 void draw_end(){
+  draw_dial();
   vrambuf_put(NTADR_A(12,10),"GAMEOVER",8);
-    vrambuf_put(NTADR_A(6,20),"merci d'avoir joue !",20);
+  vrambuf_put(NTADR_A(6,20),"merci d'avoir joue !",20);
 
   
 }
