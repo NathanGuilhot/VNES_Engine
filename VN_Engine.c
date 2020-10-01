@@ -80,8 +80,8 @@ const char PALETTE[32] = {
 
 //----Enums
 
-enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
-enum LABELS labl=START;
+//enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
+//enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
 enum GAME_STATE game_st=GAME;
@@ -135,16 +135,18 @@ char sprEl=0; //gauche
 char sprEr=0;//Drouate
 char sprM=1;//Bouche
 
-//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:
+int scrnBrightness = 0;
+
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A   7 /   8 \
 
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
 
 const Passage SCRPT[] = {
-  {SWPEL,"0"},
-  {SWPER,"0"},
-  {SWPM,"1"},
+  {SWPM,"4"},
+  {SWPEL,"1"},
+  {SWPER,"1"},
   {N,"Bienvenue dans VNES ! *"},
-  {A,"On est pas bien la ?"},
+  {A,"Tu vois, ca fait longtemps      que je n'ai pas travaille."},
   {SWPEL,"3"},
   {SWPER,"3"},
   {A,"Ce beau ciel bleu, cette mer    calme..."},
@@ -171,8 +173,8 @@ const int ChoiceCollection[][2] = {
 };
 
 const char expr[]={ //liste des expressions
-  211	,212	,213	,214	,215	, 216
-//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:
+  211	,212	,213	,214	,215	, 216	,217	, 218	, 219
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \
 };
 
 //Choix CHOIX[]={}
@@ -217,10 +219,10 @@ void draw_ange(){
 }
 
 void draw_ange_face(){
-  oam_id = oam_spr(112, 67, expr[sprEl], 2, oam_id);
-  oam_id = oam_spr(130, 67, expr[sprEr], 2, oam_id);
+  oam_id = oam_spr(111, 67, expr[sprEl], 2, oam_id);
+  oam_id = oam_spr(129, 67, expr[sprEr], 2, oam_id);
   
-  oam_id = oam_spr(122, 73, expr[sprM], 2, oam_id);
+  oam_id = oam_spr(121, 73, expr[sprM], 2, oam_id);
   
 }
 
@@ -388,7 +390,9 @@ void main(void)
   // enable rendering
   ppu_on_all();
   // infinite loop
+  
   while(1) {
+    
     oam_id = 0;
     ppu_wait_frame();
     vrambuf_clear();
