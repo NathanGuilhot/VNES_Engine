@@ -84,7 +84,7 @@ const char PALETTE[32] = {
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=DIAL;
+enum GAME_STATE game_st=GAME;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/};
@@ -184,7 +184,7 @@ const Passage SCRPT[] = {
 
   //
   {A, "Hum, au fait, je voulais        te poser une question..."},
-  {A, "Tu te souviens du projet        dont tu m'as parle?"},
+  {A, "Tu te souviens de ton projet?   Celui dont tu m'as parle?"},
   {A, "Il avait l'air interessant,     comment il avance?"},
 
   //> J'en vois le bout!
@@ -377,9 +377,9 @@ const Passage SCRPT[] = {
   {A, "Beaucoup de choses me font      stresser de toutes façons,"},
   {A, "je crois que tu commence a      me connaître!"},
   {A, "Je suis comme ça, j'ignore      si je changerais un jour."},
-  {A, "Mais cette raison que je suis   bien en ta compagnie."},
-  {A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
-  {A, "Et ça me fait du bien."},
+  //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
+  //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
+  //{A, "Et ça me fait du bien."},
 
   //>J'adore la foule!
   {A, "Vraiment? C'est dingue ça!"},
@@ -602,11 +602,79 @@ const Passage SCRPT[] = {
 };
 
 const Choice ListeChoix[]= {
-  {"J'aime beaucoup !",13},
-  {"Les mouettes m'ennuient",16}
+  {"Oui ca va! Et toi ?",1},
+  {"Desole du retard",1},
+  {"C'etait dur de te trouver",1},
+  
+  {"Oui, c'est tres joli!",1},
+  {"Bof, c'est la mer quoi.",1},
+  
+  {"J'en vois le bout!",1},
+  {"J'ai du mal a avancer...",1},
+  	{"Oui",1},
+  	{"Je sais pas si ça m'aiderait",1},
+  {"Je suis passe a autre chose",1},
+  
+  {"Trop bien!",1},
+  {"Qu'est-ce qu'ils t'ont dit?",1},
+  
+  {"C'est juste des questions",1},
+  {"Ils vont pas te manger haha",1},
+  {"J'ai oublie moi aussi",1},
+  
+  {"Oui, ca fait serieux",1},
+  {"Non, soit decontract'",1},
+  {"Porte ce qui te plait",1},
+  
+  {"Bien sur!",1},
+  {"Je ne saurais pas t'aider",1},
+	  {"Bon, si tu insiste",1},
+  
+  {"Vanille",1},
+  {"Chocolat",1},
+  {"Fruit",1},
+  {"Peu importe",1},
+  	{"J'aime tous les parfums",1},
+  	{"Non pas trop",1},
+  
+          {"Oui, je ne supporte pas",1},
+          {"Ca me derange pas vraiment",1},
+          {"J'adore la foule!",1},
+  //--Branche glace
+  {"Je comptais te l'offrir",1},
+  {"Penses a me rembourser",1},
+  {"Franchement, t'abuses",1},
+  
+  {"Tout me fait envie!",1},
+  {"Prends ce que tu veux",1},
+  {"C'est vraiment cher!",1},
+  {"Tu veux pas une crepe plutot?",1},
+  
+  {"Demander a un passant",1},
+  {"Chercher dans la foule",1},
+  {"Retourner à la plage",1},
+  
+  {"Non c'est toi qui est la!",1},
+  {"Qu'est-ce qui s'est passe?",1},
+  {"Tu vas bien?",1},
+  
+  {"L'habitude?",1},
+  {"Et donc tu m'a attendu ici",1},
+  
+  {"Tu as prit de bonnes habitudes",1},
+  {"Au final, on a pu se retrouver",1},
+  {"Tu parles peu de ta mere",1},
+  	{"Ce n'est rien",1},
+  
+  
+  //--Main and last branch (?)
+  {"Oui, partout dans le monde!",1},
+  {"Oui mais proche de chez moi",1},
+  {"Non pas du tout",1}
+  
 };
 
-const int ChoiceCollection[][2] = {
+const char ChoiceCollection[][4] = {
   {0,1}
 };
 
@@ -735,10 +803,13 @@ void updt_dial(){
 void draw_game(){
   //oam_spr(x,y,sprite,color,id)
   //oam_id = oam_spr(40, 40, 8, 1, oam_id);
-  vrambuf_put(NTADR_A(3,10),"~PROMENADE AU BORD DE MER~",26);
-  vrambuf_put(NTADR_A(4,11),"________________________",24);
-  vrambuf_put(NTADR_A(7,13),"une demo pour VNES",18);
-  vrambuf_put(NTADR_A(18,26),"2020 NIGHTEN",12);
+  vrambuf_put(NTADR_A(13,10),"~ANGE~",6);
+  vrambuf_put(NTADR_A(3,11),"_________________________",25);
+  vrambuf_put(NTADR_A(5,13),"a date on the seaside",21);
+  
+  vrambuf_put(NTADR_A(1,26),"PRESS A",7);
+  
+  vrambuf_put(NTADR_A(19,26),"2020 NIGHTEN",12);
   
 }
 
