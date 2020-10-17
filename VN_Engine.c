@@ -40,6 +40,9 @@
 #include "vrambuf.h"
 //#link "vrambuf.c"
 
+//#link "famitone2.s"
+void __fastcall__ famitone_update(void);
+
 const char ANGESPR[][8] = { 
   {0x00,0x00,0x81,0x82,0x83,0x84,0x85,0x00},
   {0x00,0x86,0x87,0x87,0x87,0x87,0x89,0x00},
@@ -388,29 +391,33 @@ void main(void)
     
     pad = pad_poll(0); //pad j1
     
-    if (game_st==GAME){
+    switch (game_st){
+    case GAME:{
       if (debug_mode){vrambuf_put(NTADR_A(2,2),"Game",4);}
       draw_game();
       updt_game();
-      
+      break;
+
     }
-    else if (game_st==DIAL){
+    case DIAL:{
       if (debug_mode){vrambuf_put(NTADR_A(2,2),"Dialogue",8);}
       draw_dial();
       updt_dial();
+      break;
       
     }
-    else if (game_st==CHOICE){
+    case CHOICE:{
       if (debug_mode){vrambuf_put(NTADR_A(2,2),"Choice",6);}
       draw_choice();
       updt_choice();
-      
+      break; 
     }
-    else if (game_st==END){
+    case END:{
       if (debug_mode){vrambuf_put(NTADR_A(2,2),"END",3);}
       draw_end();
       updt_end();
-      
+      break;
+    }
     }
     
     
