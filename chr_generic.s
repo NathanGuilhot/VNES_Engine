@@ -45,8 +45,8 @@
 .byte $10,$38,$7C,$FE,$EE,$10,$38,$00
 .byte $7E,$FF,$FF,$FF,$FF,$7E,$3C,$18
 .byte $6C,$FE,$FE,$FE,$7C,$38,$10,$00
-.byte $18,$3C,$7E,$FF,$FF,$7E,$3C,$18
-.byte $10,$38,$7C,$FE,$7C,$38,$10,$00
+.byte $18,$3C,$3C,$7E,$7E,$FF,$FF,$FF
+.byte $10,$38,$38,$7C,$7C,$FE,$FE,$00
 .byte $3C,$7E,$7E,$FF,$FF,$FF,$3C,$3C
 .byte $38,$7C,$38,$FE,$D6,$10,$38,$00
 .byte $18,$3C,$FF,$FF,$7E,$7E,$7E,$7E

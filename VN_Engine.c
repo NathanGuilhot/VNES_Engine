@@ -14,6 +14,8 @@
 //-----------------------------------------------------//
 
 
+
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -78,6 +80,8 @@ const char PALETTE[32] = {
   0x0D,0x27,0x2A	// sprite palette 3
 };
 
+const char btn_next[] = {0x16};
+
 //----Enums
 
 //enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
@@ -112,7 +116,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 22; //index dans le label en cours
+unsigned int index = 25; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -125,7 +129,7 @@ bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
 
-bool debug_mode = false;
+const bool debug_mode = false;
 
 int i;
 char oam_id;
@@ -140,7 +144,8 @@ bool dispAnge = false;
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A   7 /   8 \
 
-#include "script_fr.h" //Visual Novel Content
+//#include "script_fr.h" //Visual Novel Content
+#include "script_en.h"
 
 const char expr[]={ //liste des expressions
   211	,212	,213	,214	,215	, 216	,217	, 218	, 219
@@ -263,7 +268,8 @@ void updt_dial(){
    a_pressed=false; 
   }
   
-  if (cursor<60) cursor++;
+  if (cursor<60) {cursor++;vrambuf_put(NTADR_A(28,26)," ",1);}
+  else {vrambuf_put(NTADR_A(28,26),btn_next,1);}
   
   //delay(2);//Si tu veux ralentir la vitesse du texte
   
