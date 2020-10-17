@@ -112,7 +112,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 0; //index dans le label en cours
+unsigned int index = 8; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -234,6 +234,10 @@ void updt_dial(){
     sprM=atoi(SCRPT[index].c);
     index++;
   }
+  else if (SCRPT[index].t==H){
+    dispAnge=!dispAnge;
+    index++;
+  }
   
   if (pad&PAD_A){
     if (!a_pressed){
@@ -291,12 +295,14 @@ void updt_game(){
   }
 }
 
+char nb_choice = 2;
+
 void draw_choice(){
-  vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel),">",2);
+  vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel),">",2);
   oam_id = oam_spr(112, 67, 211, 2, oam_id);
+  nb_choice = ChoiceCollection[atoi(SCRPT[index].c)][0];
   
-  
-  for (i=1;i<(ChoiceCollection[atoi(SCRPT[index].c)][0]);i++){
+  for (i=1;i<=nb_choice;i++){
   	vrambuf_put(NTADR_A(3,15+i+i),ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt, 30);
   }
   
@@ -306,10 +312,10 @@ void updt_choice(){
   //Selection
   if (pad&PAD_A){
     if (!a_pressed){
-      index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel]].jmp;
+      index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel+1]].jmp;
       game_st=DIAL;
       clrscr();
-      draw_ange();
+      draw_ange(); //(?)
       a_pressed=true;
       choice_sel=0;
     }
@@ -318,13 +324,13 @@ void updt_choice(){
   //Up & Down
   if (pad&PAD_DOWN){
     if (!d_pressed){
-      if (choice_sel<1){vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel)," ",2);choice_sel++;}
+      if (choice_sel<nb_choice-1){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",2);choice_sel++;}
       d_pressed=true;
     }
   } else{d_pressed=false;}
   if (pad&PAD_UP){
     if (!u_pressed){
-      if (choice_sel>0){vrambuf_put(NTADR_A(2,15+choice_sel+choice_sel)," ",2);choice_sel--;}
+      if (choice_sel>0){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",2);choice_sel--;}
       u_pressed=true;
     }
   } else{u_pressed=false;}

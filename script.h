@@ -465,7 +465,7 @@ const Passage SCRPT[] = {
 const Choice ListeChoix[]= {
   {"Oui ca va! Et toi ?",1},
   {"Desole du retard",1},
-  {"C'etait dur de te trouver",1},
+  {"C'etait dur de te trouver",14},
   
   {"Oui, c'est tres joli!",1},
   {"Bof, c'est la mer quoi.",1},
@@ -537,5 +537,5 @@ const Choice ListeChoix[]= {
 
 const char ChoiceCollection[][5] = {
   //{nb_choix,nchoix,...};
-  {2,0,1,3},
+  {3,0,1,2},
 };
