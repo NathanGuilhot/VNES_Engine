@@ -112,7 +112,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 27; //index dans le label en cours
+unsigned int index = 22; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;

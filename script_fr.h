@@ -10,26 +10,6 @@ const Passage SCRPT[] = {
   {H, "show"},
   {A, "Ah tu es la!"},
   {A, "Ca me fait plaisir de te voir,  tu vas bien?"},
-  {C, "0"},//choix
-  {C, "1"},//choix
-  {C, "2"},//choix
-  {C, "3"},//choix
-  {C, "4"},//choix
-  {C, "5"},//choix
-  {C, "6"},//choix
-  {C, "7"},//choix
-  {C, "8"},//choix
-  {C, "9"},//choix
-  {C, "10"},//choix
-  {C, "11"},//choix
-  {C, "12"},//choix
-  {C, "13"},//choix
-  {C, "14"},//choix
-  {C, "15"},//choix
-  {C, "16"},//choix
-  {C, "17"},//choix
-  {C, "18"},//choix
-  {C, "19"},//choix
 
 
   //> "Oui ca va! Et toi ?"},
@@ -49,7 +29,8 @@ const Passage SCRPT[] = {
   {N, "Son attention se porte alors    sur la mer."},
   {N, "Elle est calme, reguliere,      et s'etant a perte de vu."},
   {A, "C'est beau,                     tu ne trouves pas?"},
-
+  //{C, "1"},
+  
   //> "Oui, c'est tres joli!"},
   {A, "Je vois que tu apprecies la     vue autant que moi!"},
   {A, "Si je le pouvais je resterais   ici toute ma vie."},
@@ -68,7 +49,8 @@ const Passage SCRPT[] = {
   {A, "Hum, au fait, je voulais        te poser une question..."},
   {A, "Tu te souviens de ton projet?   Celui dont tu m'as parle?"},
   {A, "Il avait l'air interessant,     comment il avance?"},
-
+  //{C, "2"},
+  
   //> J'en vois le bout!
   {A, "Genial! Il y a de quoi etre     fier de toi!"},
   {A, "Tu sais, j'admire beaucoup      ta determination."},
@@ -82,18 +64,19 @@ const Passage SCRPT[] = {
   {A, "C'est normal d'avoir des        periodes de doute."},
   {A, "Peut etre que tu as juste       besoin de te reposer!"},
   {A, "Est-ce que tu as pense a        demander de l'aide?"},
-  //>Oui
-  {A, "Super, je penses que tu         es sur la bonne voie!"},
-  {A, "Penses a parler de tes          doutes avec ces personnes,"},
-  {A, "Parfois, juste parler aide      a trouver une solution."},
-  {A, "En tout cas c'est ce qui        m'arrive quand on discute!"},
+  {C, "3"},
+    //>Oui
+    {A, "Super, je penses que tu         es sur la bonne voie!"},
+    {A, "Penses a parler de tes          doutes avec ces personnes,"},
+    {A, "Parfois, juste parler aide      a trouver une solution."},
+    {A, "En tout cas c'est ce qui        m'arrive quand on discute!"},
 
-  //>Je sais pas si ça m'aiderait
-  {A, "Tu sais, il y a pas de          honte a demander de l'aide."},
-  {A, "Mais je comprends, c'est        pas toujours facile."},
-  {A, "Je... je veux bien              t'aider si tu veux!"},
-  {A, "Mais tu as surement des amis    plus competents que moi!"},
-  {A, "Dans tous les cas ne reste      pas solitaire, promis?"},
+    //>Je sais pas si ça m'aiderait
+    {A, "Tu sais, il y a pas de          honte a demander de l'aide."},
+    {A, "Mais je comprends, c'est        pas toujours facile."},
+    {A, "Je... je veux bien              t'aider si tu veux!"},
+    {A, "Mais tu as surement des amis    plus competents que moi!"},
+    {A, "Dans tous les cas ne reste      pas solitaire, promis?"},
 
 
   //> Je suis passe a autre chose
@@ -107,6 +90,7 @@ const Passage SCRPT[] = {
   {A, "Mais recemment tu m'as          encourage a envoyer mon CV."},
   {A, "Je ne pensais pas avoir de      reponses pour etre honnete."},
   {A, "Mais quelqu'un a repondu!"},
+  {C, "4"},
   //>Trop bien!
   {A, "Haha, merci beaucoup!           Mais tout n'est pas gagne."},
   {A, "Ils m'ont invite a un           entretiens mais..."},
@@ -119,7 +103,8 @@ const Passage SCRPT[] = {
   {A, "Tu vois, ca fait longtemps      que je n'ai pas travaille."},
   {A, "J'ai meme oublie comment se     passent ces entretiens."},
   {A, "Tu sais en quoi ça consiste     toi?"},
-
+  {C, "5"},
+  
   //>C'est juste des questions
   {A, "Ah d'accord, ils veulent        juste me connaitre?"},
   {A, "C'est un peu comme un           rendez-vous amoureux, hehe"},
@@ -142,7 +127,7 @@ const Passage SCRPT[] = {
   {A, "Mais j'ai peur de faire         un truc de travers."},
   {A, "Genre, est-ce que je dois       mettre une... chemise?"},
 
-
+  {C, "6"},
   //>Oui, ca fait serieux
   {A, "D'accord d'accord, il faut      que j'ai l'air pro!"},
   {A, "Si je fais bonne impression     il me feront confiance."},
@@ -169,7 +154,7 @@ const Passage SCRPT[] = {
   {A, "Il faudra que j'experimente     avec ce que j'ai!"},
 
   {A, "Dit, je pourrai t'envoyer       des photos de mes essais?"},
-
+  {C, "7"},
   //>Bien sur!
   {A, "Merci! Je savais que je         pouvais compter sur toi!"},
   {A, "Juste un avis exterieur         m'aidera beaucoup a choisir."},
@@ -179,15 +164,18 @@ const Passage SCRPT[] = {
   {A, "Je demande juste ton            avis honnete, c'est tout!"},
   {A, "Tu es quelqu'un en qui j'ai     confiance pour ça."},
   {A, "Et si je veux m'embarrasser,    c'est pas devant un styliste"},
-  //>Bon, si tu insiste
-  {A, "Merci beaucoup! Je te           revaudrai ça!"},
+  	  {C, "8"},
+          //>Bon, si tu insiste
+          {A, "Merci beaucoup! Je te           revaudrai ça!"},
 
   {A, "Bon, j'arrete de t'embeter      avec mes tracas."},
   {A, "Tu veux faire quelque           chose en particulier?"},
+  {C, "20"},
   //>Et si on achetait une glace?
   {A, "Oh oui! Tres bonne idee!"},
   {A, "On dit qu'ils vendent tous      les parfums imaginables ici."},
   {A, "C'est quoi ton parfum           prefere?"},
+  {C, "9"},
 
   //>Vanille
   {A, "Oh, je vois que tu es           du genre classique!"},
@@ -201,13 +189,14 @@ const Passage SCRPT[] = {
   {A, "J'aime beaucoup le choco' mais  en glace c'est...bizarre."},
   {A, "Comme s'ils utilisait une       arome totalement different."},
   {A, "Tu trouves pas? Ou c'est moi    qui me fait des films?"},
-  //>Je suis d'accord
-  {A, "Ah! Ca fait plaisir de savoir   que je ne delire pas."},
-  {A, "Mais dans tous les cas tu as    le droit d'aimer!"},
-  //>Je penses que c'est des films
-  {A, "C'est fort possible!"},
-  {A, "Peut etre que je n'ai juste     pas goute les bonnes marques"},
-  {A, "Tu m'en recommandera un de      ces jours!"},
+    {C, "21"},
+    //>Je suis d'accord
+    {A, "Ah! Ca fait plaisir de savoir   que je ne delire pas."},
+    {A, "Mais dans tous les cas tu as    le droit d'aimer!"},
+    //>Je penses que c'est des films
+    {A, "C'est fort possible!"},
+    {A, "Peut etre que je n'ai juste     pas goute les bonnes marques"},
+    {A, "Tu m'en recommandera un de      ces jours!"},
 
   //>Fruit
   {A, "Sympa, et ça correspond bien    a l'ambiance estivale!"},
@@ -221,68 +210,65 @@ const Passage SCRPT[] = {
 
   //>Peu importe
   {A, "Oh d'accord, tu n'es pas        tres glace?"},
-  //>J'aime tous les parfums
-  {A, "Ah! Te connaissant ça ne        m'etonne pas en effet!"},
-  {A, "On verras bien ce qu'il y a     et ce qui te fait envie."},
+  	{C, "10"},
+        //>J'aime tous les parfums
+        {A, "Ah! Te connaissant ça ne        m'etonne pas en effet!"},
+        {A, "On verras bien ce qu'il y a     et ce qui te fait envie."},
+  	//jump ici
 
-  //>Non pas trop
-  {A, "Oh d'accord..."},
-  {A, "Je comprends, tu proposais      ça pour me faire plaisir?"},
-  {A, "C'est gentil, mais tu as pas    a te forcer tu sais."},
-  //>Pardon, oublions les glaces
-  {A, "Ne t'excuse pas! C'est tres     sympa au contraire."},
-  {A, "Et puis, on est tres bien       sur la plage, pas vrai?"},
-  {A, "Je prefere rester ici,          c'est plus calme."},
-  {A, "Tu as vu qu'ils font            une fete en ville?"},
-  {N, "En effet, en arrivant tu as     entendu de la musique."},
-  {A, "De ce que j'ai compris, c'est   un grand festival annuel."},
-  {A, "Si je peux eviter de me meler   a la foule, c'est mieux."},
-  {N, "D'ici, vous entendez des        chants et des bruits festifs"},
-  {N, "Il doit y avoir beaucoup de     monde la bas."},
-  {N, "Et c'est peut etre pour ça      que la plage est deserte."},
-  {A, "Tu as du mal avec la foule      toi?"},
-  //>Oui, je ne supporte pas
-  {A, "Tu es un peu comme moi alors."},
-  {A, "Il m'arrive de stresser rien    qu'en y pensant."},
-  {A, "Sortir de chez moi est deja     un challenge,"},
-  {A, "Alors faire la fete, impossible d'y aller en vrai."},
-  {A, "Mais c'est pas vraiment         la meme chose ici."},
-  {A, "Et puis tu es la,               on peut se soutenir!"},
+        //>Non pas trop
+        {A, "Oh d'accord..."},
+        {A, "Je comprends, tu proposais      ça pour me faire plaisir?"},
+        {A, "C'est gentil, mais tu as pas    a te forcer tu sais."},
+        {A, "Oublions les glaces, mais       merci d'avoir propose!"},
+        {A, "Et puis, on est tres bien       sur la plage, pas vrai?"},
+        {A, "Je prefere rester ici,          c'est plus calme."},
+        {A, "D'ailleurs, tu as vu qu'ils     font une fete en ville?"},
+        {N, "En effet, en arrivant tu as     entendu de la musique."},
+        {A, "De ce que j'ai compris, c'est   un grand festival annuel."},
+        {A, "Si je peux eviter de me meler   a la foule, c'est mieux."},
+        {N, "D'ici, vous entendez des        chants et des bruits festifs"},
+        {N, "Il doit y avoir beaucoup de     monde la bas."},
+        {N, "Et c'est peut etre pour ça      que la plage est deserte."},
+        {A, "Tu as du mal avec la foule      toi?"},
+ 	{C, "11"},
+        //>Oui, je ne supporte pas
+        {A, "Tu es un peu comme moi alors."},
+        {A, "Il m'arrive de stresser rien    qu'en y pensant."},
+        {A, "Sortir de chez moi est deja     un challenge,"},
+        {A, "Alors faire la fete, impossible d'y aller en vrai."},
+        {A, "Mais c'est pas vraiment         la meme chose ici."},
+        {A, "Et puis tu es la,               on peut se soutenir!"},
 
-  //>Ca me derange pas vraiment
-  {A, "Ca te pose pas de problemes     particulier? C'est chouette!"},
-  {A, "Je veux dire, j'aimerais bien   etre comme toi."},
-  {A, "Pas forcement aimer ça, mais    etre plus neutre."},
-  {A, "Ne pas stresser juste a l'idee  de voir des gens..."},
-  {A, "..."},
-  {A, "Excuse moi."},
-  {A, "Beaucoup de choses me font      stresser de toutes façons,"},
-  {A, "je crois que tu commence a      me connaître!"},
-  {A, "Je suis comme ça, j'ignore      si je changerais un jour."},
-  //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
-  //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
-  //{A, "Et ça me fait du bien."},
+        //>Ca me derange pas vraiment
+        {A, "Ca te pose pas de problemes     particulier? C'est chouette!"},
+        {A, "Je veux dire, j'aimerais bien   etre comme toi."},
+        {A, "Pas forcement aimer ça, mais    etre plus neutre."},
+        {A, "Ne pas stresser juste a l'idee  de voir des gens..."},
+        {A, "..."},
+        {A, "Excuse moi."},
+        {A, "Beaucoup de choses me font      stresser de toutes façons,"},
+        {A, "je crois que tu commence a      me connaître!"},
+        {A, "Je suis comme ça, j'ignore      si je changerais un jour."},
+        //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
+        //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
+        //{A, "Et ça me fait du bien."},
 
-  //>J'adore la foule!
-  {A, "Vraiment? C'est dingue ça!"},
-  {A, "C'est vrai que tu vas souvent   faire la fetes."},
-  {A, "Enfin plus que moi ça           c'est sur!"},
-  {A, "Tu as l'esprit festif, c'est    surement une bonne chose."},
-  {A, "Je suis un peu a l'oppose."},
-  {A, "Mais tu sais, c'est que         j'aime avec notre amitie."},
-  {A, "On est des personnes si         differentes,"},
-  {A, "mais on se comprend."},
-  {A, "C'est tres enrichissant,        tu ne trouves pas?"},
-  {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
-  {A, "Enfin, je crois..."},
-
-  //(jump branch)
+        //>J'adore la foule!
+        {A, "Vraiment? C'est dingue ça!"},
+        {A, "C'est vrai que tu vas souvent   faire la fetes."},
+        {A, "Enfin plus que moi ça           c'est sur!"},
+        {A, "Tu as l'esprit festif, c'est    surement une bonne chose."},
+        {A, "Je suis un peu a l'oppose."},
+        {A, "Mais tu sais, c'est que         j'aime avec notre amitie."},
+        {A, "On est des personnes si         differentes,"},
+        {A, "mais on se comprend."},
+        {A, "C'est tres enrichissant,        tu ne trouves pas?"},
+        {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
+        {A, "Enfin, je crois..."},
+  	//{J,"1"}, //(jump branch)
 
   //---
-
-  //>Non, ça peut etre drole
-  {A, "D'accord, c'est comme           tu veux!"},
-  {A, "Mais il y a une autre raison    de ne pas se forcer..."}, //(??)
 
   {A, "Euh, par contre                 je dois t'avouer..."},
   {A, "Je n'ai pas vraiment d'argent   sur moi."},
@@ -290,6 +276,8 @@ const Passage SCRPT[] = {
   {A, "Tu vois, j'ai du acheter de     l'equipement pour ma maison."},
   {A, "Et du coup... c'est un peu      ric rac en ce moment."},
   {A, "Ca te derange de m'avancer?"},
+  
+  {C, "12"},
   //>Je comptais te l'offrir
   {A, "V... vraiment?"},
   {A, "Merci beaucoup! C'est           vraiment gentil de ta part."},
@@ -305,12 +293,14 @@ const Passage SCRPT[] = {
   {A, "Haha, desole, je sais que       c'est pas la premiere fois."},
   {A, "Mais apres tout c'est toi qui   a propose la glace!"},
   {A, "Aller c'est promis,             c'est la derniere."},
+  {A, "(si j'arrete de craquer sur     des bibelots...)"},
   //>La derniere?
   {A, "La derniere! Parole d'Ange!"},
   {A, "Il faut juste que je fasse      moins de shopping haha."},
 
 
-  {A, "Allons-y!"},
+  {A, "Très bien, allons-y!"},
+  {H, "hide"},
   {N, "Vous avancez tranquillement     vers la ville cotiere."},
   {N, "Une musique festive vient       a vos oreilles."},
   {N, "Vous entendez le sifflement     de fusees et de confettis."},//
@@ -318,13 +308,17 @@ const Passage SCRPT[] = {
   {N, "C'est bien l'epoque du          festival annuel,"},
   {N, "et la foule s'en donne          a coeur joie."},
   {N, "Tu t'assures qu'Ange est        toujours derriere toi."},
+  {H, "show"},
   {A, "Ne t'en fais pas...             je te suis!"},
-  {N, "Tu progresse dans la ville, en  direction du stand de glace."},
+  {H, "show"},
+  {N, "Tu progresses dans la ville en  direction du stand de glace."},
   {N, "Autours de vous volent          confettis et feu d'artifice."},
   {N, "Le gros de la foule danse sur   la place principale."},
   {N, "Tu comprends mieux pourquoi     la plage etait si vide."},
   {N, "Tu arrives enfin a la boutique  de glace."},
   {N, "Apres inspection du menu,       tu te tourne vers Ange."},
+  
+  {C, "13"},
   //>Tout me fait envie!
   //>Prends ce que tu veux
   //>C'est vraiment cher!
@@ -337,6 +331,7 @@ const Passage SCRPT[] = {
   {N, "Misere, Ange t'as surement      perdu en chemin."},
   {N, "Plein d'inquietude,             tu entame tes recherches."},
 
+  {C, "14"},
   //>Demander a un passant
   {N, "Tu interpele un passant,        esperant avoir des info."},
   {N, "\"Quelqu'un avec un pull gris?   Ici c'pas commun haha\""},
@@ -345,6 +340,7 @@ const Passage SCRPT[] = {
   {N, "\"Il survivra votre pull gris,   venez faire la fete!\""},
   {N, "Ce type etait sympathique,      mais ne t'a pas avance."},
   {N, "Les gens ici sont trop occupes  a faire la fete pour t'aider"},
+  {C, "14"},
 
   //>Chercher dans la foule
   {N, "Si Ange t'a perdu, c'est surement a cause de la foule."},
@@ -357,6 +353,7 @@ const Passage SCRPT[] = {
   {N, "Surtout dans la maree de        costumes colores."},
   {N, "Tu scrutes une derniere fois    la foule, au cas où."},
   {N, "Tu te resous finalement a       changer de strategie."},
+  {C, "14"},
 
   //>Retourner sur la plage
   {N, "Tu rebrousse chemin jusqu'a     la plage."},
@@ -367,6 +364,8 @@ const Passage SCRPT[] = {
   {N, "Tu sors de la ville,            et toujours aucune trace."},
   {N, "Mais revenu sur la plage, tu    retrouve un visage familier."},
   {A, "Ah, tu es la!"},
+  
+  {C, "15"},
   //>Non c'est toi qui est la!
   {A, "Oh non, tu me cherchais         c'est ça?"},
   {A, "Excuse-moi...                   je voulais pas t'inquieter."},
@@ -385,6 +384,7 @@ const Passage SCRPT[] = {
   {A, "Le bruit m'a distrait, et      quelqu'un m'a bouscule."},
   {A, "ca a suffit pour que je te     perde de vue."},
   {A, "Mais heureusement              j'ai l'habitude!"},
+  {C, "16"},
   //>L'habitude?
   {A, "Oui, avant j'avais la manie    de me perdre au supermarche."},
   {A, "Ca arrivais a chaque fois que  quelque chose me distrayait"},
@@ -394,7 +394,8 @@ const Passage SCRPT[] = {
   {A, "J'ai compris quoi faire        en cas de probleme:"},
   {A, "Revenir a la caisse centrale   et attendre maman!"},
   {A, "Enfin, c'est un image hein!    hehe"},
-
+  {C, "17"},
+  
   //>Tu as prit de bonnes habitudes
   {A, "Haha, si on peut appeler ça    comme ça!"},
   {A, "C'est vrai que grace a ça      on a pu se retrouver."},
@@ -410,10 +411,11 @@ const Passage SCRPT[] = {
   {A, "Je crois que je parles         beaucoup de ma vie deja."},
   {A, "Ca te derange pas vrai? Je     ferais plus attention!"},
   {A, "Desole, c'etait stupide de     raconter ce genre de cho-"},
-  //>Ce n'est rien
-  {A, "Ah... d'accord..."},
-  {A, "Je crois que mes emotions      ont encore prit le dessus..."},
-  {A, "Parlons d'autre chose,         si veux bien."},
+  {C, "18"},
+    //>Ce n'est rien
+    {A, "Ah... d'accord..."},
+    {A, "Je crois que mes emotions      ont encore prit le dessus..."},
+    {A, "Parlons d'autre chose,         si veux bien."},
 
 
   {A, "Bah d'ailleurs, au final       on a toujours pas nos glaces!"},
@@ -432,6 +434,7 @@ const Passage SCRPT[] = {
   {A, "Je pourrais voyager sans       sortir de chez moi haha"},
   {A, "Un jour peut etre..."},
   {A, "Tu aimes voyager toi?"},
+  {C, "19"},
   //>Oui, partout dans le monde!
   {A, "Woah, tu as vraiment le        gout de l'aventure!"},
   {A, "Il doit y avoir tant a         decouvrir dans le monde."},
@@ -552,7 +555,13 @@ const Choice ListeChoix[]= {
   //--Main and last branch (?)
   {"Oui, partout dans le monde!",1},
   {"Oui mais proche de chez moi",1},
-  {"Non pas du tout",1}
+  {"Non pas du tout",1},
+  
+  {"Et si on achetait une glace?",1},
+  
+  {"Je suis d'accord",1},
+  {"Je penses que c'est des films",1},
+
   
 };
 
@@ -586,4 +595,7 @@ const char ChoiceCollection[][5] = {
   {3,46,45,47},
     {1,48},
   {3,49,50,51},//où tu veux voyager
+  
+  {1,52}, //et si on achetait une glace?
+  {2,53,54}, //je suis d'accord/je penses que c'est des films
 };
