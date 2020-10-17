@@ -10,7 +10,27 @@ const Passage SCRPT[] = {
   {H, "show"},
   {A, "Ah tu es la!"},
   {A, "Ca me fait plaisir de te voir,  tu vas bien?"},
-  //{C, "0"},//choix
+  {C, "0"},//choix
+  {C, "1"},//choix
+  {C, "2"},//choix
+  {C, "3"},//choix
+  {C, "4"},//choix
+  {C, "5"},//choix
+  {C, "6"},//choix
+  {C, "7"},//choix
+  {C, "8"},//choix
+  {C, "9"},//choix
+  {C, "10"},//choix
+  {C, "11"},//choix
+  {C, "12"},//choix
+  {C, "13"},//choix
+  {C, "14"},//choix
+  {C, "15"},//choix
+  {C, "16"},//choix
+  {C, "17"},//choix
+  {C, "18"},//choix
+  {C, "19"},//choix
+
 
   //> "Oui ca va! Et toi ?"},
   {A, "Moi aussi je vais bien,         tres bien meme!"},
@@ -474,7 +494,7 @@ const Choice ListeChoix[]= {
   {"J'en vois le bout!",1},
   {"J'ai du mal a avancer...",1},
   	{"Oui",1},
-  	{"Je sais pas si ça m'aiderait",1},
+  	{"Je sais pas si ca m'aiderait",1},
   {"Je suis passe a autre chose",1},
   
   {"Trop bien!",1},
@@ -514,7 +534,7 @@ const Choice ListeChoix[]= {
   
   {"Demander a un passant",1},
   {"Chercher dans la foule",1},
-  {"Retourner à la plage",1},
+  {"Retourner a la plage",1},
   
   {"Non c'est toi qui est la!",1},
   {"Qu'est-ce qui s'est passe?",1},
@@ -523,8 +543,8 @@ const Choice ListeChoix[]= {
   {"L'habitude?",1},
   {"Et donc tu m'a attendu ici",1},
   
-  {"Tu as prit de bonnes habitudes",1},
-  {"Au final, on a pu se retrouver",1},
+  {"C'est un bon reflexe",1},
+  {"Au final on a pu se retrouver",1},
   {"Tu parles peu de ta mere",1},
   	{"Ce n'est rien",1},
   
@@ -545,25 +565,25 @@ const char ChoiceCollection[][5] = {
   {2,10,11},
   
   {3,12,13,14},
-  {3,15,16,2},
+  {3,15,16,17},
   
-  {2,17,18},
-  	{1,19},
+  {2,18,19},
+  	{1,20},
   
-  {4,20,21,22,23}, //vanille, chocolat...
-  	{2,24,25},
- 		{3,26,27,28}, //branche glace-less
-  {3,29,30,31},
+  {4,21,22,23,24}, //vanille, chocolat...
+  	{2,25,26},
+ 		{3,27,28,29}, //branche glace-less
+  {3,30,31,32},
   
-  {4,32,33,34,35},
+  {4,33,34,35,36},
   
-  {3,36,37,38},
+  {3,37,38,39},
   
-  {3,39,40,41},
+  {3,40,41,42},
   
-  {2,42,43},
+  {2,44,43},
   
-  {3,44,45,46},
-    {1,47},
-  {3,48,49,50},//où tu veux voyager
+  {3,46,45,47},
+    {1,48},
+  {3,49,50,51},//où tu veux voyager
 };

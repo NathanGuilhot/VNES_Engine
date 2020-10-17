@@ -112,7 +112,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 8; //index dans le label en cours
+unsigned int index = 27; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -140,7 +140,7 @@ bool dispAnge = false;
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A   7 /   8 \
 
-#include "script.h" //Visual Novel Content
+#include "script_fr.h" //Visual Novel Content
 
 const char expr[]={ //liste des expressions
   211	,212	,213	,214	,215	, 216	,217	, 218	, 219
@@ -235,6 +235,7 @@ void updt_dial(){
     index++;
   }
   else if (SCRPT[index].t==H){
+    if (dispAnge){clrscr();} else {draw_ange();}
     dispAnge=!dispAnge;
     index++;
   }
@@ -262,7 +263,7 @@ void updt_dial(){
    a_pressed=false; 
   }
   
-  if (cursor<59) cursor++;
+  if (cursor<60) cursor++;
   
   //delay(2);//Si tu veux ralentir la vitesse du texte
   
@@ -303,7 +304,8 @@ void draw_choice(){
   nb_choice = ChoiceCollection[atoi(SCRPT[index].c)][0];
   
   for (i=1;i<=nb_choice;i++){
-  	vrambuf_put(NTADR_A(3,15+i+i),ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt, 30);
+  	vrambuf_put(NTADR_A(3,15+i+i),
+                    ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt, 30);
   }
   
 }
@@ -315,7 +317,7 @@ void updt_choice(){
       index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel+1]].jmp;
       game_st=DIAL;
       clrscr();
-      draw_ange(); //(?)
+      if (dispAnge){draw_ange();} //(?)
       a_pressed=true;
       choice_sel=0;
     }
