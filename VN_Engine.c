@@ -40,6 +40,7 @@
 #include "vrambuf.h"
 //#link "vrambuf.c"
 
+//Music !
 //#link "famitone2.s"
 void __fastcall__ famitone_update(void);
 
@@ -147,8 +148,15 @@ bool dispAnge = false;
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A   7 /   8 \
 
-//#include "script_fr.h" //Visual Novel Content
-#include "script_en.h"
+
+#define FR 1 //bolean, 1 = FR 0 = EN
+//Visual Novel Content
+#if FR
+  #include "script_fr.h"
+#else
+  #include "script_en.h"
+#endif
+
 
 const char expr[]={ //liste des expressions
   211	,212	,213	,214	,215	, 216	,217	, 218	, 219
@@ -223,29 +231,37 @@ void draw_dial(){
 
 void updt_dial(){
   //Managing les passages spéciaux
-  if (SCRPT[index].t==C){
+  switch (SCRPT[index].t){
+  case C:{
     clrscr();
     game_st=CHOICE;
+    break;
   }
-  else if (SCRPT[index].t==J){
+  case J:{
     index = atoi(SCRPT[index].c);
+    break;
   }
-  else if (SCRPT[index].t==SWPEL){
+  case SWPEL:{
     sprEl=atoi(SCRPT[index].c);
     index++;
+    break;
   }
-  else if (SCRPT[index].t==SWPER){
+  case SWPER:{
     sprEr=atoi(SCRPT[index].c);
     index++;
+    break;
   }
-  else if (SCRPT[index].t==SWPM){
+  case SWPM:{
     sprM=atoi(SCRPT[index].c);
     index++;
+    break;
   }
-  else if (SCRPT[index].t==H){
+  case H:{
     if (dispAnge){clrscr();} else {draw_ange();}
     dispAnge=!dispAnge;
     index++;
+    break;
+  }
   }
   
   if (pad&PAD_A){

@@ -52,7 +52,7 @@ const Passage SCRPT[] = {
   //{C, "2"},
   
   //> J'en vois le bout!
-  {A, "Genial! Il y a de quoi etre     fier de toi!"},
+  {A, "Genial! Il y a de quoi etre     fier de soi!"},
   {A, "Tu sais, j'admire beaucoup      ta determination."},
   {A, "Tu dit souvent que j'exagere,   mais c'est sincere!"},
   {A, "Rien que de te parler me        motive beaucoup!"},
@@ -63,7 +63,7 @@ const Passage SCRPT[] = {
   {A, "Surtout ne te rend pas          malade par rapport a ca,"},
   {A, "C'est normal d'avoir des        periodes de doute."},
   {A, "Peut etre que tu as juste       besoin de te reposer!"},
-  {A, "Est-ce que tu as pense a        demander de l'aide?"},
+  {A, "Est-ce que tu as pense a        demander de l'aide?"}, /////
   {C, "3"},
     //>Oui
     {A, "Super, je penses que tu         es sur la bonne voie!"},

@@ -42,7 +42,7 @@ const Passage SCRPT[] = {
   {A, "Et c'est pas grave, tu as le    droit de trouver ca banal."},
   {A, "Apres tout, c'est un peu        absurde de s'y attarder ici."},
 
-  {A, "Mais pour un rendez-vous ca     reste un tres bon endroit."}, ///
+  {A, "Mais pour un rendez-vous ca     reste un tres bon endroit!"}, ///
   {A, "Maintenant ma connexion n'est   plus un probleme."}, 
   {A, "Et c'est bien plus chouette     qu'en visio!"},
 
