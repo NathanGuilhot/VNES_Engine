@@ -40,9 +40,11 @@
 #include "vrambuf.h"
 //#link "vrambuf.c"
 
-//Music !
+//Music ! // setup Famitone library
 //#link "famitone2.s"
 void __fastcall__ famitone_update(void);
+//#link "beach_shertigan.s"
+extern char beach_shertigan_data[];
 
 const char ANGESPR[][8] = { 
   {0x00,0x00,0x81,0x82,0x83,0x84,0x85,0x00},
@@ -92,7 +94,7 @@ const char btn_next[] = {0x16};
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=DIAL;
+enum GAME_STATE game_st=GAME;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -301,6 +303,13 @@ void draw_game(){
   vrambuf_put(NTADR_A(3,11),"_________________________",25);
   vrambuf_put(NTADR_A(5,13),"a date on the seaside",21);
   
+  
+  #if FR
+  vrambuf_put(NTADR_A(1,1),"fr",2);
+  #else
+  vrambuf_put(NTADR_A(5,16),"en",2);
+  #endif
+  
   vrambuf_put(NTADR_A(1,26),"PRESS A",7);
   
   vrambuf_put(NTADR_A(19,26),"2020 NIGHTEN",12);
@@ -312,7 +321,7 @@ void updt_game(){
     if (!a_pressed){
       game_st=DIAL;
       clrscr();
-      draw_ange();
+      if (dispAnge){draw_ange();}
       a_pressed=true;
     }
   }
@@ -393,6 +402,13 @@ void main(void)
 {
   setup_graphics();
   
+  //beach sound
+  famitone_init(beach_shertigan_data);
+  // set music callback function for NMI
+  nmi_set_callback(famitone_update);
+  // play music
+  music_play(0);
+
   
   // enable rendering
   ppu_on_all();
