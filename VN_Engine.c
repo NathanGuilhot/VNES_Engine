@@ -123,7 +123,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 40; //index dans le label en cours
+unsigned int index = 56; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -269,20 +269,22 @@ void updt_dial(){
   if (pad&PAD_A){
     if (!a_pressed){
       a_pressed=true;
-      //if (cursor<63){cursor=63;}//Affiche tout le texte; pas top parce que taille varibale pour le texte
-      if (index<sizeof(SCRPT)/sizeof(SCRPT[0])-1){
+      if (cursor<strlen(SCRPT[index].c)){cursor=strlen(SCRPT[index].c);}//Affiche tout le texte; pas top parce que taille varibale pour le texte
+      else {
+        if (index<sizeof(SCRPT)/sizeof(SCRPT[0])-1){
         index+=1;
         cursor=1;
         //Remplace txt par blanc, trouver une autre soluce
         // clrscr ?
         vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
 
+      	}
+     	 else{
+     	   game_st=END;
+     	   cursor=0;
+     	   clrscr();
       }
-      else{
-        game_st=END;
-        cursor=0;
-        clrscr();
-      }
+    }
     }
   }
   else{
@@ -339,7 +341,8 @@ void draw_choice(){
   
   for (i=1;i<=nb_choice;i++){
   	vrambuf_put(NTADR_A(3,15+i+i),
-                    ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt, 30);
+                    ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt,
+                    strlen(ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt)); //ugly repetition
   }
   
 }
