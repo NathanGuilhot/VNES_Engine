@@ -32,6 +32,7 @@
 // link the pattern table into CHR ROM
 //#link "chr_generic.s"
 
+
 // BCD arithmetic support
 #include "bcd.h"
 //#link "bcd.c"
@@ -94,7 +95,7 @@ const char btn_next[] = {0x16};
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st=GAME;
+enum GAME_STATE game_st = DIAL;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -104,13 +105,13 @@ typedef struct Passage Passage;
 struct Passage
 {
     enum DIAL_T t; //Type de passage
-    char c[60];//Content, en génrale le texte affiché
+    char* c;//Content, en génrale le texte affiché
 };
 
 typedef struct Choice Choice;
 struct Choice
 {
-    char txt[30]; //Texte du choix
+    char* txt; //Texte du choix
     int jmp;	  //Indice du label de destination
 };
 
@@ -122,7 +123,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 25; //index dans le label en cours
+unsigned int index = 40; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -228,7 +229,6 @@ void draw_dial(){
   
   //Dessin du visage
   if (dispAnge){draw_ange_face();};
-  
 }
 
 void updt_dial(){
@@ -289,7 +289,7 @@ void updt_dial(){
    a_pressed=false; 
   }
   
-  if (cursor<60) {cursor++;vrambuf_put(NTADR_A(28,26)," ",1);}
+  if (cursor<strlen(SCRPT[index].c)) {cursor++;vrambuf_put(NTADR_A(28,26)," ",1);}
   else {vrambuf_put(NTADR_A(28,26),btn_next,1);}
   
   //delay(2);//Si tu veux ralentir la vitesse du texte
@@ -407,7 +407,7 @@ void main(void)
   // set music callback function for NMI
   nmi_set_callback(famitone_update);
   // play music
-  music_play(0);
+  //music_play(0);
 
   
   // enable rendering
