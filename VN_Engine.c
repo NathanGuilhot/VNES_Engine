@@ -7,11 +7,11 @@
 //                    |\|  &  |/|
 //                    | |     | |
 //                    | |     | |
-//-----------------------------------------------------\\
+////---------------------------------------------------\\
 //||						       ||
-//|| ~VNES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES~ ||
+//|| ~VИES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES~ ||
 //||						       ||
-//-----------------------------------------------------//
+//\\---------------------------------------------------//
 
 
 
@@ -115,15 +115,9 @@ struct Choice
     int jmp;	  //Indice du label de destination
 };
 
-//typedef struct ChoiceCollection ChoiceCollection;
-//struct ChoiceCollection{
-//    int cc[2]; //liste des indice du tableau des Choice
-  		//Pour le moment limité à 2 choix
-//};
-
 //-----Variables utiles
 
-unsigned int index = 56; //index dans le label en cours
+unsigned int index = 328; //index dans le label en cours
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -179,7 +173,7 @@ void clrscr() {
   vrambuf_clear();
   ppu_off();
   vram_adr(0x2000);
-  vram_fill(0, 32*28);
+  vram_fill(0, 32*29);
   vram_adr(0x0);
   ppu_on_bg();
 }
@@ -208,10 +202,10 @@ void draw_ange(){
 }
 
 void draw_ange_face(){
-  oam_id = oam_spr(111, 67, expr[sprEl], 2, oam_id);
-  oam_id = oam_spr(129, 67, expr[sprEr], 2, oam_id);
-  
-  oam_id = oam_spr(121, 73, expr[sprM], 2, oam_id);
+  oam_id = oam_spr(111, 67, expr[sprEl], 2, oam_id); //  o       
+  oam_id = oam_spr(129, 67, expr[sprEr], 2, oam_id); //          O
+   
+  oam_id = oam_spr(121, 73, expr[sprM], 2, oam_id);  //    ___
   
 }
 
@@ -229,6 +223,12 @@ void draw_dial(){
   
   //Dessin du visage
   if (dispAnge){draw_ange_face();};
+  
+  //Draw text + Typewriter effect
+  if (debug_mode){cursor=strlen(SCRPT[index].c);};
+  if (cursor<strlen(SCRPT[index].c)) {cursor++;vrambuf_put(NTADR_A(28,26)," ",1);}
+  else {vrambuf_put(NTADR_A(28,26),btn_next,1);}
+  
 }
 
 void updt_dial(){
@@ -266,6 +266,7 @@ void updt_dial(){
   }
   }
   
+  
   if (pad&PAD_A){
     if (!a_pressed){
       a_pressed=true;
@@ -291,10 +292,6 @@ void updt_dial(){
    a_pressed=false; 
   }
   
-  if (cursor<strlen(SCRPT[index].c)) {cursor++;vrambuf_put(NTADR_A(28,26)," ",1);}
-  else {vrambuf_put(NTADR_A(28,26),btn_next,1);}
-  
-  //delay(2);//Si tu veux ralentir la vitesse du texte
   
 }
 
@@ -377,9 +374,9 @@ void updt_choice(){
 }
 
 void draw_end(){
-  draw_dial();
-  vrambuf_put(NTADR_A(12,10),"GAMEOVER",8);
-  vrambuf_put(NTADR_A(6,20),"merci d'avoir joue !",20);
+  //draw_dial();
+  vrambuf_put(NTADR_A(14,10),"FIN",3);
+  vrambuf_put(NTADR_A(5,20),"Merci d'avoir joue! *",21);
 
   
 }

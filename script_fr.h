@@ -105,7 +105,7 @@ const Passage SCRPT[] = {
   //{C, "5"},
   
   //>C'est juste des questions
-  {A, "Ah d'accord, ils veulent        juste me connaitre?"},
+  {A, "Ah d'accord, ils veulent juste  apprendre a me connaitre?"},
   {A, "C'est un peu comme un           rendez-vous amoureux, hehe"},
   {A, "Mais il faut bien s'habiller    pour un rendez-vous, non?"},
   {A, "Arg, j'ai aucune idee de        ce que je vais mettre!"},
@@ -113,16 +113,16 @@ const Passage SCRPT[] = {
 
   //>Ils vont pas te manger haha
   {A, "Haha, tu as raison; je me       prends trop la tete."},
-  {A, "Mais ça reste un moment         important,"},
+  {A, "Mais ca reste un moment         important,"},
   {A, "Je voudrais pas faire           n'importe quoi..."},
-  {A, "Par exemple, j'ai des           articles sur le sujet."},
+  {A, "Par exemple, j'ai lu des        articles sur le sujet,"},
   {A, "Et ils conseillent de bien      s'habiller, mais j'hesite."},
   {A, "Je dois vraiment mettre une     chemise? Tu en penses quoi?"},
 
   //>J'ai oublie moi aussi
   {A, "Haha, je suis pas la seule      personne dans ce cas."},
   {A, "Ca me rassure un peu je         t'avoue."},
-  {A, "Au final ça ne doit pas         etre si complique que ça."},
+  {A, "Au final ca ne doit pas         etre si complique que ca."},
   {A, "Mais j'ai peur de faire         un truc de travers."},
   {A, "Genre, est-ce que je dois       mettre une... chemise?"},
 
@@ -133,15 +133,16 @@ const Passage SCRPT[] = {
   {A, "Oui, c'est logique!"},
   {A, "...maintenant je vais devoir    trouver une chemise."},
   {A, "J'en ai peut etre une dans      mon placard..."},
-  {A, "Elle date, je la ressort que    pour les mariage."},
-  {A, "Mais ça devrait faire           l'affaire!"},
+  {A, "Elle date, je la ressort que    pour les mariages."},
+  {A, "(et on ne m'invite pas souvent)"},
+  {A, "Mais ca devrait faire           l'affaire!"},
 
   //>Non, soit decontract'
   {A, "Ouf, j'avais peur de devoir     m'habiller en pingouin!"},
   {A, "Donc, une tenue plus            decontractee..."},
   {A, "Hum, je pourrais ressortir      mes tee shirt d'ado."},
-  {A, "Mais tu ne voulais surement     pas dire ça haha"},
-  {A, "Qu'est-ce qu'ils vont penser    de moi si j'arrive avec ça?"},
+  {A, "Mais tu ne voulais surement     pas dire ca haha"},
+  {A, "Qu'est-ce qu'ils vont penser    de moi si j'arrive avec ca?"},
   {A, "Je penses devoir faire des      essais avant de me decider."},
 
   //>Porte ce qui te plait
@@ -161,11 +162,11 @@ const Passage SCRPT[] = {
   //>Je ne saurais pas t'aider
   {A, "Mais non, tu exagere!"},
   {A, "Je demande juste ton            avis honnete, c'est tout!"},
-  {A, "Tu es quelqu'un en qui j'ai     confiance pour ça."},
+  {A, "Tu es quelqu'un en qui j'ai     confiance pour ca."},
   {A, "Et si je veux m'embarrasser,    c'est pas devant un styliste"},
   	  //{C, "8"},
           //>Bon, si tu insiste
-          {A, "Merci beaucoup! Je te           revaudrai ça!"},
+          {A, "Merci beaucoup! Je te           revaudrai ca!"},
 
   {A, "Bon, j'arrete de t'embeter      avec mes tracas."},
   {A, "Tu veux faire quelque           chose en particulier?"},
@@ -184,7 +185,7 @@ const Passage SCRPT[] = {
   {A, "Et meme adulte d'ailleurs!"},
 
   //>Chocolat
-  {A, "Hehe, chocolat, ça correspond   bien a ton style."},
+  {A, "Hehe, chocolat, ca correspond   bien a ton style."},
   {A, "J'aime beaucoup le choco' mais  en glace c'est...bizarre."},
   {A, "Comme s'ils utilisait une       arome totalement different."},
   {A, "Tu trouves pas? Ou c'est moi    qui me fait des films?"},
@@ -198,12 +199,12 @@ const Passage SCRPT[] = {
     {A, "Tu m'en recommandera un de      ces jours!"},
 
   //>Fruit
-  {A, "Sympa, et ça correspond bien    a l'ambiance estivale!"},
-  {A, "J'adore les fruits, c'est ça    qui me maintient la sante."},
-  {A, "Mais alors en glace, ça me      rappel ma grand-mere."},
+  {A, "Sympa, et ca correspond bien    a l'ambiance estivale!"},
+  {A, "J'adore les fruits, c'est ca    qui me maintient la sante."}, //Neh? Est-ce que Ange a vraiment l'air en bonne santé pour toi?
+  {A, "Mais alors en glace, ca me      rappel ma grand-mere."},
   {A, "Elle m'en offrait a chacune     de mes visites."},
   {A, "Bon c'etait previsible          au bout d'un moment."},
-  {A, "Mais ça reste de chouettes      souvenirs!"},
+  {A, "Mais ca reste de chouettes      souvenirs!"},
   {A, "Oups! voila que je parle        encore trop de moi."},
   {A, "Excuse moi,                     je le fais pas expres."},
 
@@ -211,13 +212,13 @@ const Passage SCRPT[] = {
   {A, "Oh d'accord, tu n'es pas        tres glace?"},
   	//{C, "10"},
         //>J'aime tous les parfums
-        {A, "Ah! Te connaissant ça ne        m'etonne pas en effet!"},
+        {A, "Ah! Te connaissant ca ne        m'etonne pas en effet!"},
         {A, "On verras bien ce qu'il y a     et ce qui te fait envie."},
   	//jump ici
 
         //>Non pas trop
         {A, "Oh d'accord..."},
-        {A, "Je comprends, tu proposais      ça pour me faire plaisir?"},
+        {A, "Je comprends, tu proposais      ca pour me faire plaisir?"},
         {A, "C'est gentil, mais tu as pas    a te forcer tu sais."},
         {A, "Oublions les glaces, mais       merci d'avoir propose!"},
         {A, "Et puis, on est tres bien       sur la plage, pas vrai?"},
@@ -228,7 +229,7 @@ const Passage SCRPT[] = {
         {A, "Si je peux eviter de me meler   a la foule, c'est mieux."},
         {N, "D'ici, vous entendez des        chants et des bruits festifs"},
         {N, "Il doit y avoir beaucoup de     monde la bas."},
-        {N, "Et c'est peut etre pour ça      que la plage est deserte."},
+        {N, "Et c'est peut etre pour ca      que la plage est deserte."},
         {A, "Tu as du mal avec la foule      toi?"},
  	//{C, "11"},
         //>Oui, je ne supporte pas
@@ -242,21 +243,21 @@ const Passage SCRPT[] = {
         //>Ca me derange pas vraiment
         {A, "Ca te pose pas de problemes     particulier? C'est chouette!"},
         {A, "Je veux dire, j'aimerais bien   etre comme toi."},
-        {A, "Pas forcement aimer ça, mais    etre plus neutre."},
+        {A, "Pas forcement aimer ca, mais    etre plus neutre."},
         {A, "Ne pas stresser juste a l'idee  de voir des gens..."},
         {A, "..."},
         {A, "Excuse moi."},
-        {A, "Beaucoup de choses me font      stresser de toutes façons,"},
-        {A, "je crois que tu commence a      me connaître!"},
-        {A, "Je suis comme ça, j'ignore      si je changerais un jour."},
+        {A, "Beaucoup de choses me font      stresser de toutes facons,"},
+        {A, "je crois que tu commence a      me connaitre!"},
+        {A, "Je suis comme ca, j'ignore      si je changerais un jour."},
         //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
         //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
-        //{A, "Et ça me fait du bien."},
+        //{A, "Et ca me fait du bien."},
 
         //>J'adore la foule!
-        {A, "Vraiment? C'est dingue ça!"},
+        {A, "Vraiment? C'est dingue ca!"},
         {A, "C'est vrai que tu vas souvent   faire la fetes."},
-        {A, "Enfin plus que moi ça           c'est sur!"},
+        {A, "Enfin plus que moi ca           c'est sur!"},
         {A, "Tu as l'esprit festif, c'est    surement une bonne chose."},
         {A, "Je suis un peu a l'oppose."},
         {A, "Mais tu sais, c'est que         j'aime avec notre amitie."},
@@ -298,18 +299,18 @@ const Passage SCRPT[] = {
   {A, "Il faut juste que je fasse      moins de shopping haha."},
 
 
-  {A, "Très bien, allons-y!"},
+  {A, "Tres bien, allons-y!"},
   {H, "hide"},
   {N, "Vous avancez tranquillement     vers la ville cotiere."},
   {N, "Une musique festive vient       a vos oreilles."},
-  {N, "Vous entendez le sifflement     de fusees et de confettis."},//
+  //{N, "Vous entendez le sifflement     de fusees et de confettis."},//
 
   {N, "C'est bien l'epoque du          festival annuel,"},
   {N, "et la foule s'en donne          a coeur joie."},
   {N, "Tu t'assures qu'Ange est        toujours derriere toi."},
   {H, "show"},
   {A, "Ne t'en fais pas...             je te suis!"},
-  {H, "show"},
+  {H, "hide"},
   {N, "Tu progresses dans la ville en  direction du stand de glace."},
   {N, "Autours de vous volent          confettis et feu d'artifice."},
   {N, "Le gros de la foule danse sur   la place principale."},
@@ -334,24 +335,24 @@ const Passage SCRPT[] = {
   //>Demander a un passant
   {N, "Tu interpele un passant,        esperant avoir des info."},
   {N, "\"Quelqu'un avec un pull gris?   Ici c'pas commun haha\""},
-  {N, "\"Maintenant tout le monde porte la collection estival!\"" },
-  {N, "\"La classe pas vrai? Attendez   de voir ma nouvelles dance!\"" },
-  {N, "\"Il survivra votre pull gris,   venez faire la fete!\""},
+  {N, "\"Maintenant tout le monde porte la collection estivale!\"" },
+  {N, "\"La classe pas vrai? Attends    de voir ma nouvelle dance!\"" },
+  {N, "\"Il survivra ton pull gris,     viens faire la fete!\""},
   {N, "Ce type etait sympathique,      mais ne t'a pas avance."},
-  {N, "Les gens ici sont trop occupes  a faire la fete pour t'aider"},
+  {N, "Les gens ici sont trop occupes  a faire la fete pour t'aider."},
   //{C, "14"},
 
   //>Chercher dans la foule
-  {N, "Si Ange t'a perdu, c'est surement a cause de la foule."},
+  {N, "Si Ange t'a perdu, c'est        surement a cause de la foule."},
   {N, "Bravement, tu te glisse entre   les danseurs a sa recherche."},
-  {N, "Tu sens bien que tu gene, mais  c'est au nom de l'amitie."},
+  {N, "Tu vois bien que tu genes,      mais c'est au nom de l'amitie."},
   {N, "Sur la place, tu grimpe sur la  fontaine centrale."},
   {N, "Te surelever t'aidera plus      dans tes recherches."},
   {N, "Tu surplombe la foule du        regard, mais sans succes."},
-  {N, "Pourtant ses vetements gris     est facilement reperables,"},
+  {N, "Pourtant ses vetements gris     sont facilement reperables,"},
   {N, "Surtout dans la maree de        costumes colores."},
-  {N, "Tu scrutes une derniere fois    la foule, au cas où."},
-  {N, "Tu te resous finalement a       changer de strategie."},
+  {N, "Tu scrutes une derniere fois    la foule, au cas ou."},
+  {N, "Mais tu te resous finalement a  changer de strategie."},
   //{C, "14"},
 
   //>Retourner sur la plage
@@ -359,133 +360,132 @@ const Passage SCRPT[] = {
   {N, "Peut etre qu'Ange est quelque   part sur la route."},
 
   {N, "Tu fais attention a regarder    partout autours de toi."},
-  {N, "Inspectant ruelles et detours   au cas où Ange y serait."},
+  {N, "Inspectant ruelles et detours   au cas ou Ange y serait."},
   {N, "Tu sors de la ville,            et toujours aucune trace."},
   {N, "Mais revenu sur la plage, tu    retrouve un visage familier."},
+  {H, "show"},
   {A, "Ah, tu es la!"},
   
   //{C, "15"},
   //>Non c'est toi qui est la!
-  {A, "Oh non, tu me cherchais         c'est ça?"},
+  {A, "Oh non, tu me cherchais         c'est ca?"},
   {A, "Excuse-moi...                   je voulais pas t'inquieter."},
   {A, "Je me suis trouve mal           au milieu de la foule."},
 
   //>Qu'est-ce qui s'est passe?
-  {A, "Et bien...au milieu de la      foule, j'etais pas tres bien."},
+  {A, "Et bien...au milieu de la       foule, j'etais pas tres bien."},
 
   //>Tu vas bien?
-  {A, "Oui, ça vas, ne t'inquiete     pas pour moi!"},
-  {A, "En tout cas je vais mieux      maintenant!"},
-  {A, "C'est juste que... la foule    c'est pas trop mon truc."},
+  {A, "Oui, ca vas, ne t'inquiete      pas pour moi!"},
+  {A, "En tout cas je vais mieux       maintenant!"},
+  {A, "C'est juste que... la foule     c'est pas trop mon truc."},
 
-  {A, "Je savais pour le festival,    mais je le pensais plus..."},
-  {A, "petit. Je pensais pas voir     autant de monde ici."},
-  {A, "Le bruit m'a distrait, et      quelqu'un m'a bouscule."},
-  {A, "ca a suffit pour que je te     perde de vue."},
-  {A, "Mais heureusement              j'ai l'habitude!"},
+  {A, "Je savais pour le festival,     mais je le pensais plus..."},
+  {A, "petit. Je pensais pas voir      autant de monde ici."},
+  {A, "Le bruit m'a distrait, et       quelqu'un m'a bouscule."},
+  {A, "ca a suffit pour que je te      perde de vue."},
+  {A, "Mais heureusement               j'ai l'habitude!"},
   //{C, "16"},
   //>L'habitude?
-  {A, "Oui, avant j'avais la manie    de me perdre au supermarche."},
-  {A, "Ca arrivais a chaque fois que  quelque chose me distrayait"},
-  {A, "Des que je regardais ailleurs, ma mere avait disparu."},
-  //>C'est pour ça que tu es revenu?
-  {A, "C'est ça, c'est ma mere qui    me l'as appris!"},
-  {A, "J'ai compris quoi faire        en cas de probleme:"},
-  {A, "Revenir a la caisse centrale   et attendre maman!"},
-  {A, "Enfin, c'est un image hein!    hehe"},
+  {A, "Oui, avant j'avais la manie     de me perdre au supermarche."},
+  {A, "Ca arrivais a chaque fois que   quelque chose me distrayait"},
+  {A, "Des que je regardais ailleurs,  ma mere avait disparu."},
+  //>C'est pour ca que tu es revenu?
+  {A, "C'est ca, c'est ma mere qui     me l'as appris!"},
+  {A, "J'ai compris quoi faire         en cas de probleme:"},
+  {A, "Revenir a la caisse centrale    et attendre maman!"},
+  {A, "Enfin, c'est un image hein!     hehe"},
   //{C, "17"},
   
   //>Tu as prit de bonnes habitudes
-  {A, "Haha, si on peut appeler ça    comme ça!"},
-  {A, "C'est vrai que grace a ça      on a pu se retrouver."},
-  {A, "Encore pardon, la prochaine    fois je ferai attention!"},
+  {A, "Haha, si on peut appeler ca     comme ca!"},
+  {A, "C'est vrai que grace a ca       on a pu se retrouver."},
+  {A, "Encore pardon, la prochaine     fois je ferai attention!"},
 
   //>Au final, on a pu se retrouver
   {A, "Oui, c'est l'essentiel!"},
-  {A, "Encore pardon de t'avoir fais  soucis!"},
+  {A, "Encore pardon de t'avoir fais   soucis!"},
 
   //>Tu parles peu de ta mere
   {A, "Oh... euh..."},
-  {A, "T-tu trouves? Je vois pas      pourquoi en parler plus..."},
-  {A, "Je crois que je parles         beaucoup de ma vie deja."},
-  {A, "Ca te derange pas vrai? Je     ferais plus attention!"},
-  {A, "Desole, c'etait stupide de     raconter ce genre de cho-"},
+  {A, "T-tu trouves? Je vois pas       pourquoi en parler plus..."},
+  {A, "Je crois que je parles          beaucoup de ma vie deja."},
+  {A, "Ca te derange pas vrai? Je      ferais plus attention!"},
+  {A, "Desole, c'etait stupide de      raconter ce genre de cho-"},
   //{C, "18"},
     //>Ce n'est rien
     {A, "Ah... d'accord..."},
-    {A, "Je crois que mes emotions      ont encore prit le dessus..."},
-    {A, "Parlons d'autre chose,         si veux bien."},
+    {A, "Je crois que mes emotions       ont encore prit le dessus..."},
+    {A, "Parlons d'autre chose,          si veux bien."},
 
 
-  {A, "Bah d'ailleurs, au final       on a toujours pas nos glaces!"},
-  {A, "C'est bete, on aura fait       cette expedition pour rien"},
-  {A, "Mais c'est pas tres grave,     c'est pour une autre fois!"},
+  {A, "Bah d'ailleurs, au final        on a toujours pas nos glaces!"},
+  {A, "C'est bete, on aura fait        cette expedition pour rien"},
+  {A, "Mais c'est pas tres grave,      c'est pour une autre fois!"},
 
-  {N, "Son regard se porta alors      vers la mer."},
-  {N, "Le jour est a present bien     avance,"},
-  {N, "et le soleil descend           progressivement dans le ciel."},
-  {N, "Ses rayons se refletent        etrangement sur l'eau bleue."},
-  {N, "C'est vraiment un beau         spectacle."},
-  {N, "Soudain, Ange remarque         quelque chose a l'horizon."},
-  {A, "Oh regarde! Il y a un          bâteau la bas!"},
-  {A, "Je me demande a qui            il appartient."},
-  {A, "Ce doit etre chouette          d'avoir sa maison sur l'eau."},
-  {A, "Je pourrais voyager sans       sortir de chez moi haha"},
+  {N, "Son regard se porta alors       vers la mer."},
+  {N, "Le jour est a present bien      avance,"},
+  {N, "et le soleil descend            progressivement dans le ciel."},
+  {N, "Ses rayons se refletent         etrangement sur l'eau bleue."},
+  {N, "C'est vraiment un beau          spectacle."},
+  {N, "Soudain, Ange remarque          quelque chose a l'horizon."},
+  {A, "Oh regarde! Il y a un bateau    la bas!"},
+  {A, "Je me demande a qui il          appartient."},
+  {A, "Ce doit etre chouette d'avoir   sa maison sur l'eau."},
+  {A, "Je pourrais voyager sans        sortir de chez moi haha"},
   {A, "Un jour peut etre..."},
   {A, "Tu aimes voyager toi?"},
   //{C, "19"},
   //>Oui, partout dans le monde!
-  {A, "Woah, tu as vraiment le        gout de l'aventure!"},
-  {A, "Il doit y avoir tant a         decouvrir dans le monde."},
-  {A, "J'en vois une partie dans des  documentaires,"},
-  {A, "Mais je suis sur qu'il y a     beaucoup plus a decouvrir."},
-  {A, "je te l'ai surement deja dit,  mais je t'envie beaucoup."},
-  {A, "C'est comme si tu vivais plus que moi."},
+  {A, "Woah, tu as vraiment le         gout de l'aventure!"},
+  {A, "Il doit y avoir tant a          decouvrir dans le monde."},
+  {A, "J'aime en apprendre plus en     regardant des documentaires,"},
+  {A, "Mais je suis sur qu'il y a      beaucoup plus a decouvrir."},
+  {A, "Je te l'ai surement deja dit,   mais je t'envie beaucoup."},
+  {A, "C'est comme si tu vivais plus   que moi..."},
 
   //>Oui mais proche de chez moi
-  {A, "C'est pas bete, il y a de     beaux endroits vers chez toi."},
-  {A, "Je me demande ce qu'il y a    dans ma region."},
-  {A, "Je n'en n'ai aucune idee,     mais il doit y en avoir."},
-  {A, "Je penses que je ferai ça     si je me decide a voyager."},
-  {A, "Au moins je peux rentrer      chez moi n'importe quand."},
+  {A, "C'est pas bete, il y a de       beaux endroits vers chez toi."},
+  {A, "Je me demande ce qu'il y a      dans ma region."},
+  {A, "Je n'en n'ai jamais cherche,    mais il y en a surement."}, //fall flat
+  {A, "Je penses que je ferai ca       si je me decide a voyager."},
+  {A, "Au moins je peux rentrer        chez moi n'importe quand."},
 
   //>Non pas du tout
-  {A, "Oh, donc tu es un peu         comme moi."},
-  {A, "C'est vrai qu'on est bien     chez soi, dans son cocon."},
-  {A, "Si je le pouvais, je ne       sortirais jamais."},
-  {A, "Mais je devrais pas faire     ça toute ma vie, pas vrai?"},
-  {A, "Il faudra bien que je me      reprenne en main."},
+  {A, "Oh, donc tu es un peu           comme moi."},
+  {A, "C'est vrai qu'on est bien       chez soi, dans son cocon."},
+  {A, "Si je le pouvais, je ne         sortirais jamais."},
+  {A, "Mais je devrais pas faire       ca toute ma vie, pas vrai?"},
+  {A, "Il faudra bien que je me        reprenne en main."},
 
 
   //main and last branch
-  {A, "J'espere un jour avoir un     peu plus de courage."},
-  {A, "Tu le sais, meme une          rencontre ici me fait stresser"},
-  {A, "Des fois, je me demande       ce que je vais devenir."},
-  {A, "Des fois, je.'é"},
+  {A, "J'espere un jour avoir un       peu plus de courage."},
+  {A, "Tu le sais, meme une rencontre  ici me fait stresser."},
+  {A, "Des fois, je me demande         ce que je vais devenir."},
+  {A, "Des fois, je é¤ £"},
   {A, "..."},
-  {A, "Excuse moi, c'est encore      mes emotions."},
-  {A, "Tu sais, je ne sais pas       pourquoi tu reste avec moi."},
-  {A, "Je ne suis pas une personne   tres interessante."},
-  {A, "Juste une petite chose qui    essaye de traverser la vie."},
-  {A, "Mais tu es toujours la pour   ecouter, me conseiller."},
-  {A, "On a certes des differences,  mais toi au moins..."},
+  {A, "Excuse moi, c'est encore        mes emotions."},
+  {A, "Tu sais, je ne sais pas         pourquoi tu reste avec moi."},
+  {A, "Je ne suis pas une personne     tres interessante."},
+  {A, "Juste une petite chose qui      essaye de traverser la vie."},
+  {A, "Mais tu es toujours la pour     ecouter, me conseiller."},
+  {A, "On a certes des differences,    mais toi au moins..."},
   {A, "..."},
-  {A, "C'est pour ça que j'aime      autant ta compagnie."},
-  {A, "Tu m'acceptes, meme quand     j'ai du mal a le faire."},
-  {A, "Et ça me fais d- b1en... "},
-  {A, "Hey, ça t- dirait d'alle-    ramasser des coqvi'&lag-s?"},
-  {A, "P' urquoi tu f-- ct - tete?"},
-  {A, "....dd;...."},
+  {A, "C'est pour ca que j'aime        autant ta compagnie."},
+  {A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
+  {A, "Et ca me fais du béen... "},
+  {A, "Hey, ca tµ dirait d'alle-  ramasser des coqvi'£lag-s?"},
+  {A, "Pô urquoi tu faà ct - tete?"},
+  {A, "....é£;...."},
+  {H, "hide"},
   {N, " "},
   {N, "Connexion perdue..."},
-  {N, "Ange s'est deconnecte"},
-
-  {N, "F I N"},
-  {N, "(merci d'avoir joue!)"},
+  {N, "Ange s'est deconnecte"}
 };
 
 const Choice ListeChoix[]= {
-  {"Oui ca va! Et toi ?",1},
+  {"Oui ca va! Et toi?",1},
   {"Desole du retard",1},
   {"C'etait dur de te trouver",14},
   
