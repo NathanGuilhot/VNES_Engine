@@ -117,7 +117,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 328; //index dans le label en cours
+unsigned int index = 30; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -130,7 +130,7 @@ bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
 
-const bool debug_mode = false;
+const bool debug_mode = true;
 
 int i;
 char oam_id;
@@ -141,10 +141,9 @@ char sprEr=0;//Drouate
 char sprM=1;//Bouche
 
 int scrnBrightness = 0;
-bool dispAnge = false;
+bool dispAnge = true;
 
-//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A   7 /   8 \
-
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 
 #define FR 1 //bolean, 1 = FR 0 = EN
 //Visual Novel Content
@@ -156,8 +155,8 @@ bool dispAnge = false;
 
 
 const char expr[]={ //liste des expressions
-  211	,212	,213	,214	,215	, 216	,217	, 218	, 219
-//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \
+  211	,212	,213	,214	,215	, 216	,217	, 218	, 219	,220	,221
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 };
 
 //Choix CHOIX[]={}
@@ -413,6 +412,7 @@ void main(void)
   // enable rendering
   ppu_on_all();
   // infinite loop
+  if (debug_mode){draw_ange();};
   
   while(1) {
     

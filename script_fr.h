@@ -1,33 +1,64 @@
 //-----Visual Novel content !! °˖✧◝(⁰▿⁰)◜✧˖°
-
+//0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 const Passage SCRPT[] = {
-  {SWPM,"4"},
   {N, "En cette fin d'apres-midi,      tu marches sur la plage."},
   {N, "Il y a peu de monde ici.        C'est calme."},
   {N, "Rythme par le son de la mer,    tu avance sur le sable."},
   {N, "Tu trouve enfin la personne     que tu cherchais."},
   //Show ANGE
+  {SWPM,"4"},
+  {SWPEL,"0"},
+  {SWPER,"0"},
   {H, "show"},
   {A, "Ah tu es la!"},
+  {SWPM,"1"},
   {A, "Ca me fait plaisir de te voir,  tu vas bien?"},
 
 
   //> "Oui ca va! Et toi ?"},
+  {SWPM,"4"},
+  {SWPEL,"3"},
+  {SWPER,"3"},
   {A, "Moi aussi je vais bien,         tres bien meme!"},
+  {SWPM,"1"},
+  {SWPEL,"6"},
+  {SWPER,"6"},
   {A, "J'avais un peu peur qu'on       arrive pas a se retrouver,"},
+  {SWPEL,"0"},
+  {SWPER,"0"},
   {A, "mais finalement il n'y avait    pas a s'inquieter!"},
 
   //> "Desole du retard"
+  {SWPM,"4"},
+  {SWPEL,"1"},
+  {SWPER,"1"},
   {A, "Ne t'excuse pas, tu es la       c'est l'essentiel!"},
+  {SWPM,"1"},
+  {SWPEL,"0"},
+  {SWPER,"0"},
   {A, "Et j'ai pu profiter du          paysage en attendant!"},
 
   //> "C'etait dur de te trouver"
+  {SWPM,"4"},
+  {SWPEL,"3"},
+  {SWPER,"3"},
   {A, "Haha, mes indications etaient   si vagues que ca?"},
+  {SWPM,"1"},
+  {SWPEL,"9"},
+  {SWPER,"10"},
   {A, "Desole, je ne connais pas       beaucoup la region."},
-  {A, "Et puis au moins sur cette      plage on est tranquilles!"},
-
+  {SWPM,"4"},
+  {SWPEL,"0"},
+  {SWPER,"0"},
+  {A, "Mais je trouvais cette plage    pas trop mal."},
+  {SWPM,"1"},
+  {A, "Au moins ici on est au calme!"},
+  {SWPEL,"6"},
+  {SWPER,"6"},
   {N, "Son attention se porte alors    sur la mer."},
   {N, "Elle est calme, reguliere,      et s'etant a perte de vu."},
+  {SWPEL,"3"},
+  {SWPER,"3"},
   {A, "C'est beau,                     tu ne trouves pas?"},
   //{C, "1"},
   
@@ -186,8 +217,8 @@ const Passage SCRPT[] = {
 
   //>Chocolat
   {A, "Hehe, chocolat, ca correspond   bien a ton style."},
-  {A, "J'aime beaucoup le choco' mais  en glace c'est...bizarre."},
-  {A, "Comme s'ils utilisait une       arome totalement different."},
+  {A, "J'aime beaucoup le chocolat,    mais en glace c'est...bizarre."},
+  {A, "Comme s'ils utilisaient un      arome totalement different."},
   {A, "Tu trouves pas? Ou c'est moi    qui me fait des films?"},
     //{C, "21"},
     //>Je suis d'accord
