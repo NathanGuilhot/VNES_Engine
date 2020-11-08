@@ -15,13 +15,9 @@
 
 
 
-
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <string.h>
-
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+//#include <stdio.h> //I don't know if I really needs it
 
 // include NESLIB header
 #include "neslib.h"
@@ -105,7 +101,7 @@ typedef struct Passage Passage;
 struct Passage
 {
     enum DIAL_T t; //Type de passage
-    char* c;//Content, en génrale le texte affiché
+    char* c;//Content, en general le texte affiché
 };
 
 typedef struct Choice Choice;
@@ -168,6 +164,14 @@ void setup_graphics() {
   // set palette colors
   pal_all(PALETTE);
 }
+
+int c_atoi(char* str){ //custom atoi function so I don't need the stdlib
+  int res = 0;
+  for (i = 0; str[i] != '\0'; i++) res = res * 10 + str[i] - '0';
+  return res;
+  //Credit : https://www.geeksforgeeks.org/write-your-own-atoi/
+}
+
 void clrscr() {
   vrambuf_clear();
   ppu_off();
@@ -239,21 +243,21 @@ void updt_dial(){
     break;
   }
   case J:{
-    index = atoi(SCRPT[index].c);
+    index = c_atoi(SCRPT[index].c);
     break;
   }
   case SWPEL:{
-    sprEl=atoi(SCRPT[index].c);
+    sprEl=c_atoi(SCRPT[index].c);
     index++;
     break;
   }
   case SWPER:{
-    sprEr=atoi(SCRPT[index].c);
+    sprEr=c_atoi(SCRPT[index].c);
     index++;
     break;
   }
   case SWPM:{
-    sprM=atoi(SCRPT[index].c);
+    sprM=c_atoi(SCRPT[index].c);
     index++;
     break;
   }
@@ -333,12 +337,12 @@ char nb_choice = 2;
 void draw_choice(){
   vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel),">",2);
   oam_id = oam_spr(112, 67, 211, 2, oam_id);
-  nb_choice = ChoiceCollection[atoi(SCRPT[index].c)][0];
+  nb_choice = ChoiceCollection[c_atoi(SCRPT[index].c)][0];
   
   for (i=1;i<=nb_choice;i++){
   	vrambuf_put(NTADR_A(3,15+i+i),
-                    ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt,
-                    strlen(ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][i]].txt)); //ugly repetition
+                    ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt,
+                    strlen(ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt)); //ugly repetition
   }
   
 }
@@ -347,7 +351,7 @@ void updt_choice(){
   //Selection
   if (pad&PAD_A){
     if (!a_pressed){
-      index = ListeChoix[ChoiceCollection[atoi(SCRPT[index].c)][choice_sel+1]].jmp;
+      index = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][choice_sel+1]].jmp;
       game_st=DIAL;
       clrscr();
       if (dispAnge){draw_ange();} //(?)
