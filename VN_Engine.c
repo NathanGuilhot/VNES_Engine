@@ -113,7 +113,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 437; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 508; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -280,7 +280,7 @@ void updt_dial(){
         cursor=1;
         //Remplace txt par blanc, trouver une autre soluce
         // clrscr ?
-        vrambuf_put(NTADR_A(2,24),"                                                                ", 64);
+        vrambuf_put(NTADR_A(2,24),"                                                                                ", 64+16); //clear the text
 
       	}
      	 else{
