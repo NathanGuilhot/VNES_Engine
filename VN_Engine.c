@@ -15,7 +15,7 @@
 
 
 
-//#include <stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 //#include <stdio.h> //I don't know if I really needs it
 
@@ -67,6 +67,11 @@ const char ANGESPR[][8] = {
   
 };
 
+const char NIGHTEN_LOGO[][7] = {
+  {0xF9,0xFA,0xFB,0xFC,0xFD,0xFE,0xFF},
+  {0xF8,0xF8,0xF8,0xF8,0xF8,0xF8,0xF8}
+};
+
 
 /*{pal:"nes",layout:"nes"}*/
 const char PALETTE[32] = { 
@@ -91,7 +96,7 @@ const char btn_next[] = {0x16};
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st = DIAL;
+enum GAME_STATE game_st = GAME;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -113,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 893; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 0; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -126,7 +131,7 @@ bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
 
-const bool debug_mode = true;
+const bool debug_mode = false;
 
 int i;
 char oam_id;
@@ -137,7 +142,9 @@ char sprEr=0;//Drouate
 char sprM=1;//Bouche
 
 int scrnBrightness = 0;
-bool dispAnge = true;
+bool dispAnge = false;
+
+char* index_txt = "indx";
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 
@@ -269,6 +276,8 @@ void updt_dial(){
   }
   }
   
+  //update index_txt for debug
+  itoa(index, index_txt,10);
   
   if (pad&PAD_A){
     if (!a_pressed){
@@ -303,7 +312,7 @@ void draw_game(){
   //oam_id = oam_spr(40, 40, 8, 1, oam_id);
   vrambuf_put(NTADR_A(13,10),"~ANGE~",6);
   vrambuf_put(NTADR_A(3,11),"_________________________",25);
-  vrambuf_put(NTADR_A(5,13),"a date on the seaside",21);
+  vrambuf_put(NTADR_A(6,13),"date on the seaside",19);
   
   
   #if FR
@@ -314,7 +323,10 @@ void draw_game(){
   
   vrambuf_put(NTADR_A(1,26),"PRESS A",7);
   
-  vrambuf_put(NTADR_A(19,26),"2020 NIGHTEN",12);
+  //vrambuf_put(NTADR_A(25,24),"2020",4);
+  vrambuf_put(NTADR_A(23,26),NIGHTEN_LOGO[0],7);
+  vrambuf_put(NTADR_A(23,27),NIGHTEN_LOGO[1],7);
+
   
 }
 
@@ -436,7 +448,7 @@ void main(void)
 
     }
     case DIAL:{
-      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Dialogue",8);}
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Dialogue",8);vrambuf_put(NTADR_A(2,3),index_txt,3);}
       draw_dial();
       updt_dial();
       break;
