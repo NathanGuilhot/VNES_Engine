@@ -96,7 +96,7 @@ const char btn_next[] = {0x16};
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st = GAME;
+enum GAME_STATE game_st = DIAL;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -118,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 0; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 11; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -131,7 +131,7 @@ bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
 
-const bool debug_mode = false;
+const bool debug_mode = true;
 
 int i;
 char oam_id;
@@ -145,6 +145,8 @@ int scrnBrightness = 0;
 bool dispAnge = false;
 
 char* index_txt = "indx";
+char nb_choice = 2;
+char* txt_choix = "choix";
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 
@@ -219,6 +221,35 @@ void draw_ange_face(){
   
 }
 
+
+void init_draw_choice(){
+  nb_choice = ChoiceCollection[c_atoi(SCRPT[index].c)][0];
+  //for (i=1;i<=nb_choice;i++){
+    	//txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt;
+  	//vrambuf_put(NTADR_A(4,15+i+i),txt_choix, strlen(txt_choix)); //ugly repetition
+  //}
+ 
+  //Ok alors c'est super moche ce qui vas suivre, mais pour une raison que j'ignore la boucle for fait frizer tout le jeu; j'arrangerai ça plus tard mais là wallah je dois finir ce jeu
+  
+  txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][1]].txt;
+  vrambuf_put(NTADR_A(4,15+i+i),txt_choix, strlen(txt_choix));
+  if (nb_choice>=2){
+    
+    txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][2]].txt;
+    vrambuf_put(NTADR_A(4,15+2+2),txt_choix, strlen(txt_choix));
+    if (nb_choice>=3){
+      
+      txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][3]].txt;
+      vrambuf_put(NTADR_A(4,15+3+3),txt_choix, strlen(txt_choix));
+      if (nb_choice>=4){
+        
+        txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][4]].txt;
+        vrambuf_put(NTADR_A(4,15+4+4),txt_choix, strlen(txt_choix));
+      }
+    }
+  }
+}
+
 //function
 void draw_dial(){  
   if (SCRPT[index].t==N){
@@ -247,6 +278,7 @@ void updt_dial(){
   case C:{
     clrscr();
     game_st=CHOICE;
+    init_draw_choice();
     break;
   }
   case J:{
@@ -344,18 +376,11 @@ void updt_game(){
   }
 }
 
-char nb_choice = 2;
 
 void draw_choice(){
   vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel),">",2);
   oam_id = oam_spr(112, 67, 211, 2, oam_id);
-  nb_choice = ChoiceCollection[c_atoi(SCRPT[index].c)][0];
   
-  for (i=1;i<=nb_choice;i++){
-  	vrambuf_put(NTADR_A(3,15+i+i),
-                    ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt,
-                    strlen(ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt)); //ugly repetition
-  }
   
 }
 

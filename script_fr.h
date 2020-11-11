@@ -13,7 +13,7 @@ const Passage SCRPT[] = {
   {A, "Ah, tu es la!"},
   {SWPM,"1"},
   {A, "Ca me fait plaisir de te voir,  tu vas bien?"},
-
+  {C,"0"},
 
   //> "Oui ca va! Et toi ?"},
   {SWPM,"4"},
@@ -60,7 +60,7 @@ const Passage SCRPT[] = {
   {SWPEL,"3"},
   {SWPER,"3"},
   {A, "C'est beau,                     tu ne trouves pas?"},
-  //{C, "1"},
+  {C, "1"},
   
   //> "Oui, c'est tres joli!"},
   {SWPEL,"0"},
