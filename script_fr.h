@@ -27,6 +27,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "mais finalement il n'y avait    pas a s'inquieter!"},
+  {J,"47"},
 
   //> "Desole du retard"
   {SWPM,"4"},
@@ -37,6 +38,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Et j'ai pu profiter du          paysage en attendant!"},
+  {J,"47"},
 
   //> "C'etait dur de te trouver"
   {SWPM,"4"},
@@ -53,6 +55,7 @@ const Passage SCRPT[] = {
   {A, "Mais je trouvais cette plage    pas trop mal."},
   {SWPM,"1"},
   {A, "Au moins ici on est au calme!"},
+  
   {SWPEL,"6"},
   {SWPER,"6"},
   {N, "Son attention se porte alors    sur la mer."},
@@ -60,7 +63,7 @@ const Passage SCRPT[] = {
   {SWPEL,"3"},
   {SWPER,"3"},
   {A, "C'est beau,                     tu ne trouves pas?"},
-  {C, "1"},
+  {C, "1"}, ////
   
   //> "Oui, c'est tres joli!"},
   {SWPEL,"0"},
@@ -73,11 +76,11 @@ const Passage SCRPT[] = {
   {SWPER,"3"},
   {SWPM,"4"},
   {A, "Bon ca serait pas tres          confortable a la longue,"},
+  {J,"50"},
 
   //> "Bof, c'est la mer quoi."},
   {SWPEL,"3"},
   {SWPER,"6"},
-  
   {SWPM,"4"},
   {A, "Hehe, tu n'as toujours pas une  ame d'artiste."},
   {SWPEL,"0"},
@@ -1155,9 +1158,9 @@ const Passage SCRPT[] = {
 };
 
 const Choice ListeChoix[]= {
-  {"Oui ca va! Et toi?",1},
-  {"Desole du retard",1},
-  {"C'etait dur de te trouver",14},
+  {"Oui ca va! Et toi?",12},
+  {"Desole du retard",23},
+  {"C'etait dur de te trouver",31},
   
   {"Oui, c'est tres joli!",1},
   {"Bof, c'est la mer quoi.",1},
