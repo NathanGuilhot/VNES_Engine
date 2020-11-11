@@ -411,6 +411,19 @@ void updt_choice(){
     }
   } else{u_pressed=false;}
   
+  if (debug_mode){
+  if (pad&PAD_B){
+   if (!b_pressed){
+     b_pressed=true;
+     index++;
+     clrscr();
+     game_st=DIAL;
+   }
+  }
+  else{
+    l_pressed = false;
+  }
+  }
 }
 
 void draw_end(){
