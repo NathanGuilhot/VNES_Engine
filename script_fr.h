@@ -63,7 +63,7 @@ const Passage SCRPT[] = {
   {SWPEL,"3"},
   {SWPER,"3"},
   {A, "C'est beau,                     tu ne trouves pas?"},
-  {C, "1"}, ////
+  {C, "1"}, 
   
   //> "Oui, c'est tres joli!"},
   {SWPEL,"0"},
@@ -76,7 +76,7 @@ const Passage SCRPT[] = {
   {SWPER,"3"},
   {SWPM,"4"},
   {A, "Bon ca serait pas tres          confortable a la longue,"},
-  {J,"50"},
+  {J,"77"},
 
   //> "Bof, c'est la mer quoi."},
   {SWPEL,"3"},
@@ -111,7 +111,7 @@ const Passage SCRPT[] = {
   {A, "Tu te souviens de ton projet?   Celui dont tu m'as parle?"},
   {SWPM,"1"},
   {A, "Il avait l'air interessant,     comment il avance?"},
-  //{C, "2"},
+  {C, "2"},
   
   //> J'en vois le bout!
   {SWPM,"4"},
@@ -129,6 +129,7 @@ const Passage SCRPT[] = {
   {SWPEL,"3"},
   {SWPER,"3"},
   {A, "Rien que de te parler me        motive beaucoup!"},
+  {J,"178"},
 
 
   //> J'ai du mal a avancer...
@@ -147,7 +148,7 @@ const Passage SCRPT[] = {
   {A, "Peut etre que tu as juste       besoin de te reposer!"},
   {SWPM,"1"},
   {A, "Est-ce que tu as pense a        demander de l'aide?"},
-  //{C, "3"},
+  {C, "3"},
     //>Oui
     {SWPM,"4"},
     {SWPEL,"3"},
@@ -162,6 +163,7 @@ const Passage SCRPT[] = {
     {SWPER,"3"},
     {SWPM,"1"},
     {A, "En tout cas c'est ce qui        m'arrive quand on discute!"},
+    {J,"178"},
 
     //>Je sais pas si ça m'aiderait
     {SWPM,"4"},
@@ -182,6 +184,7 @@ const Passage SCRPT[] = {
     {SWPEL,"3"},
     {SWPER,"3"},
     {A, "Dans tous les cas ne reste      pas solitaire, promis?"},
+    {J,"178"},
 
 
   //> Je suis passe a autre chose
@@ -196,7 +199,7 @@ const Passage SCRPT[] = {
   {SWPM,"1"},
   {SWPEL,"0"},
   {SWPER,"0"},
-  {A, "Si on concretisait toutes nos   idees on en sortirait pas."},
+  {A, "Si on concretisait toutes nos   idees on s'en sortirait pas."},
   {SWPM,"1"},
   {SWPEL,"7"},
   {SWPER,"8"},
@@ -215,7 +218,8 @@ const Passage SCRPT[] = {
   {SWPEL,"3"},
   {SWPER,"3"},
   {A, "Mais quelqu'un a repondu!"},
-  //{C, "4"},
+  {C, "4"},
+  
   //>Trop bien!
   {SWPM,"1"},
   {SWPEL,"9"},
@@ -245,7 +249,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Tu sais en quoi ca consiste     toi?"},
-  //{C, "5"},
+  {C, "5"},
   
   //>C'est juste des questions
   {SWPM,"2"},
@@ -313,8 +317,8 @@ const Passage SCRPT[] = {
   {A, "Mais j'ai peur de faire         un truc de travers."},
   {SWPM,"2"},
   {A, "Genre, est-ce que je dois       mettre une... chemise?"},
-
-  //{C, "6"},
+  {C, "6"},
+  
   //>Oui, ca fait serieux
   {SWPM,"1"},
   {SWPEL,"10"},
@@ -398,7 +402,7 @@ const Passage SCRPT[] = {
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Dit, je pourrai t'envoyer       des photos de mes essais?"},
-  //{C, "7"},
+  {C, "7"},
   
   //>Bien sur!
   {SWPM,"4"},
@@ -425,7 +429,7 @@ const Passage SCRPT[] = {
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Et si je veux m'embarrasser,    c'est pas devant un styliste"},
-  	  //{C, "8"},
+  {C, "8"},
           //>Bon, si tu insiste
   	  {SWPM,"4"},
           {SWPEL,"3"},
@@ -440,7 +444,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Tu veux faire quelque           chose en particulier?"},
-  //{C, "20"},
+  {C, "20"},
   //>Et si on achetait une glace?
   {SWPM,"4"},
   {SWPEL,"3"},
@@ -454,7 +458,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "C'est quoi ton parfum           prefere?"},
-  //{C, "9"},
+  {C, "9"},
 
   //>Vanille
   {SWPM,"4"},
@@ -489,7 +493,7 @@ const Passage SCRPT[] = {
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Tu trouves pas? Ou c'est moi    qui me fait des films?"},
-    //{C, "21"},
+    {C, "21"},
     //>Je suis d'accord
     {SWPM,"4"},
     {SWPEL,"3"},
@@ -546,7 +550,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Oh d'accord, tu n'es pas        tres glace?"},
-  	//{C, "10"},
+  {C, "10"},
         //>J'aime tous les parfums
         {SWPM,"4"},
         {SWPEL,"3"},
@@ -598,7 +602,7 @@ const Passage SCRPT[] = {
         {SWPEL,"0"},
         {SWPER,"0"},
         {A, "Tu as du mal avec la foule      toi?"},
- 	//{C, "11"},
+ 	{C, "11"},
         //>Oui, je ne supporte pas
         {SWPM,"1"},
         {SWPEL,"3"},
@@ -694,7 +698,7 @@ const Passage SCRPT[] = {
         {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
   	{SWPM,"2"},
         {A, "Enfin, je crois..."},
-  	//{J,"1"}, //(jump branch)
+  	{J,"1"}, //(jump branch)
 
   //---
 
@@ -722,7 +726,7 @@ const Passage SCRPT[] = {
   {SWPER,"0"},
   {A, "Ca te derange de m'avancer?"},
   
-  //{C, "12"},
+  {C, "12"},
   //>Je comptais te l'offrir
   {SWPM,"1"},
   {SWPEL,"9"},
@@ -797,8 +801,8 @@ const Passage SCRPT[] = {
   {N, "Tu comprends mieux pourquoi     la plage etait si vide."},
   {N, "Tu arrives enfin a la boutique  de glace."},
   {N, "Apres inspection du menu,       tu te tourne vers Ange."},
+  {C, "13"},
   
-  //{C, "13"},
   //>Tout me fait envie!
   //>Prends ce que tu veux
   //>C'est vraiment cher!
@@ -810,8 +814,8 @@ const Passage SCRPT[] = {
   {N, "Personne."},
   {N, "Misere, Ange t'as surement      perdu en chemin."},
   {N, "Plein d'inquietude,             tu entame tes recherches."},
-
-  //{C, "14"},
+  {C, "14"},
+  
   //>Demander a un passant
   {N, "Tu interpele un passant,        esperant avoir des info."},
   {N, "\"Quelqu'un avec un pull gris?   Ici c'pas commun haha\""},
@@ -820,7 +824,7 @@ const Passage SCRPT[] = {
   {N, "\"Il survivra ton pull gris,     viens faire la fete!\""},
   {N, "Ce type etait sympathique,      mais ne t'a pas avance."},
   {N, "Les gens ici sont trop occupes  a faire la fete pour t'aider."},
-  //{C, "14"},
+  {C, "14"},
 
   //>Chercher dans la foule
   {N, "Si Ange t'a perdu, c'est        surement a cause de la foule."},
@@ -833,7 +837,7 @@ const Passage SCRPT[] = {
   {N, "Surtout dans la maree de        costumes colores."},
   {N, "Tu scrutes une derniere fois    la foule, au cas ou."},
   {N, "Mais tu te resous finalement a  changer de strategie."},
-  //{C, "14"},
+  {C, "14"},
 
   //>Retourner sur la plage
   {N, "Tu rebrousse chemin jusqu'a     la plage."},
@@ -849,7 +853,7 @@ const Passage SCRPT[] = {
   {SWPER,"0"},
   {A, "Ah, tu es la!"},
   
-  //{C, "15"},
+  {C, "15"},
   //>Non c'est toi qui est la!
   {SWPM,"3"},
   {A, "Oh non, tu me cherchais         c'est ca?"},
@@ -896,7 +900,8 @@ const Passage SCRPT[] = {
   {SWPEL,"1"},
   {SWPER,"1"},
   {A, "Mais heureusement               j'ai l'habitude!"},
-  //{C, "16"},
+  {C, "16"},
+  
   //>L'habitude?
   {SWPM,"1"},
   {SWPEL,"7"},
@@ -923,7 +928,7 @@ const Passage SCRPT[] = {
   {SWPEL,"7"},
   {SWPER,"8"},
   {A, "Enfin ici c'est un image hein!  hehe"},
-  //{C, "17"},
+  {C, "17"},
   
   //>Tu as prit de bonnes habitudes
   {SWPM,"4"},
@@ -966,7 +971,7 @@ const Passage SCRPT[] = {
   {A, "Ca te derange pas vrai? Je      ferais plus attention!"},
   {SWPM,"3"},
   {A, "Desole, c'etait stupide de      raconter ce genre de cho-"},
-  //{C, "18"},
+  {C, "18"},
     //>Ce n'est rien
     {SWPM,"1"},
     {SWPEL,"9"},
@@ -1023,7 +1028,8 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Tu aimes voyager toi?"},
-  //{C, "19"},
+  {C, "19"},
+  
   //>Oui, partout dans le monde!
   {SWPEL,"3"},
   {SWPER,"3"},
@@ -1159,17 +1165,17 @@ const Passage SCRPT[] = {
 
 const Choice ListeChoix[]= {
   {"Oui ca va! Et toi?",12},
-  {"Desole du retard",23},
-  {"C'etait dur de te trouver",31},
+  {"Desole du retard",24},
+  {"C'etait dur de te trouver",33},
   
-  {"Oui, c'est tres joli!",1},
-  {"Bof, c'est la mer quoi.",1},
+  {"Oui, c'est tres joli!",55},
+  {"Bof, c'est la mer quoi.",66},
   
-  {"J'en vois le bout!",1},
-  {"J'ai du mal a avancer...",1},
-  	{"Oui",1},
-  	{"Je sais pas si ca m'aiderait",1},
-  {"Je suis passe a autre chose",1},
+  {"J'en vois le bout!",97},
+  {"J'ai du mal a avancer...",113},
+  	{"Oui",129},
+  	{"Je sais pas si ca m'aiderait",143},
+  {"Je suis passe a autre chose",162},
   
   {"Trop bien!",1},
   {"Qu'est-ce qu'ils t'ont dit?",1},

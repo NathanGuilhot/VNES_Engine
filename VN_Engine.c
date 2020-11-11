@@ -118,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 11; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 190; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -142,7 +142,7 @@ char sprEr=0;//Drouate
 char sprM=1;//Bouche
 
 int scrnBrightness = 0;
-bool dispAnge = false;
+bool dispAnge = true;
 
 char* index_txt = "indx";
 char nb_choice = 2;
@@ -232,19 +232,19 @@ void init_draw_choice(){
   //Ok alors c'est super moche ce qui vas suivre, mais pour une raison que j'ignore la boucle for fait frizer tout le jeu; j'arrangerai ça plus tard mais là wallah je dois finir ce jeu
   
   txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][1]].txt;
-  vrambuf_put(NTADR_A(4,15+i+i),txt_choix, strlen(txt_choix));
+  vrambuf_put(NTADR_A(3,15+i+i),txt_choix, strlen(txt_choix));
   if (nb_choice>=2){
     
     txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][2]].txt;
-    vrambuf_put(NTADR_A(4,15+2+2),txt_choix, strlen(txt_choix));
+    vrambuf_put(NTADR_A(3,15+2+2),txt_choix, strlen(txt_choix));
     if (nb_choice>=3){
       
       txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][3]].txt;
-      vrambuf_put(NTADR_A(4,15+3+3),txt_choix, strlen(txt_choix));
+      vrambuf_put(NTADR_A(3,15+3+3),txt_choix, strlen(txt_choix));
       if (nb_choice>=4){
         
         txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][4]].txt;
-        vrambuf_put(NTADR_A(4,15+4+4),txt_choix, strlen(txt_choix));
+        vrambuf_put(NTADR_A(3,15+4+4),txt_choix, strlen(txt_choix));
       }
     }
   }
@@ -378,7 +378,7 @@ void updt_game(){
 
 
 void draw_choice(){
-  vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel),">",2);
+  vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel),">",1);
   oam_id = oam_spr(112, 67, 211, 2, oam_id);
   
   
@@ -400,13 +400,13 @@ void updt_choice(){
   //Up & Down
   if (pad&PAD_DOWN){
     if (!d_pressed){
-      if (choice_sel<nb_choice-1){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",2);choice_sel++;}
+      if (choice_sel<nb_choice-1){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",1);choice_sel++;}
       d_pressed=true;
     }
   } else{d_pressed=false;}
   if (pad&PAD_UP){
     if (!u_pressed){
-      if (choice_sel>0){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",2);choice_sel--;}
+      if (choice_sel>0){vrambuf_put(NTADR_A(2,17+choice_sel+choice_sel)," ",1);choice_sel--;}
       u_pressed=true;
     }
   } else{u_pressed=false;}
@@ -418,10 +418,11 @@ void updt_choice(){
      index++;
      clrscr();
      game_st=DIAL;
+     if (dispAnge){draw_ange();}
    }
   }
   else{
-    l_pressed = false;
+    b_pressed = false;
   }
   }
 }
