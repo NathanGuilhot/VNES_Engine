@@ -350,6 +350,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Mais ca devrait faire           l'affaire!"},
+  {J, "357"},
 
   //>Non, soit decontract'
   {SWPM,"4"},
@@ -376,6 +377,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Je penses devoir faire des      essais avant de me decider."},
+  {J, "357"},
 
   //>Porte ce qui te plait
   {SWPM,"1"},
@@ -415,6 +417,11 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Juste un avis exterieur         m'aidera beaucoup a choisir."},
+  {SWPM,"1"},
+  {SWPEL,"9"},
+  {SWPER,"10"},
+  {A, "C'est mieux que de compter sur mon sens de la mode."},
+  {J, "394"},
 
   //>Je ne saurais pas t'aider
   {SWPM,"4"},
@@ -480,10 +487,11 @@ const Passage SCRPT[] = {
   {A, "Je choisissais toujours ce      parfum etant enfant!"},
   {SWPM,"1"},
   {A, "Et meme adulte d'ailleurs!"},
+  {J,"641"},
 
   //>Chocolat
   {SWPM,"4"},
-  {SWPEL,"2"},
+  {SWPEL,"3"},
   {SWPER,"0"},
   {A, "Hehe, chocolat, ca correspond   bien a ton style."},
   {SWPM,"2"},
@@ -506,6 +514,7 @@ const Passage SCRPT[] = {
     {SWPEL,"0"},
     {SWPER,"0"},
     {A, "Mais dans tous les cas tu as    le droit d'aimer!"},
+    {J,"640"},
     //>Je penses que c'est des films
     {SWPM,"1"},
     {SWPEL,"1"},
@@ -517,6 +526,7 @@ const Passage SCRPT[] = {
     {A, "Peut etre que je n'ai juste     pas goute les bonnes marques"},
     {SWPM,"4"},
     {A, "Tu m'en recommandera un de      ces jours!"},
+    {J,"641"},
 
   //>Fruit
   {SWPM,"1"},
@@ -546,7 +556,10 @@ const Passage SCRPT[] = {
   {SWPER,"10"},
   {A, "Oups! voila que je parle        encore trop de moi."},
   {SWPM,"1"},
+  {SWPEL,"1"},
+  {SWPER,"1"},
   {A, "Excuse moi,                     je le fais pas expres."},
+  {J,"641"},
 
   //>Peu importe
   {SWPM,"2"},
@@ -562,6 +575,7 @@ const Passage SCRPT[] = {
         {SWPEL,"0"},
         {SWPER,"0"},
         {A, "On verras bien ce qu'il y a     et ce qui te fait envie."},
+  	{J,"641"},
   	//jump ici
 
         //>Non pas trop
@@ -626,7 +640,8 @@ const Passage SCRPT[] = {
         {A, "Mais c'est pas vraiment         la meme chose ici."},
         {SWPM,"4"},
         {A, "Et puis tu es la,               on peut se soutenir!"},
-
+	{J,"641"},//TODO CHANGE VALUE LATER
+  
         //>Ca me derange pas vraiment
         {SWPM,"4"},
         {SWPEL,"0"},
@@ -661,6 +676,7 @@ const Passage SCRPT[] = {
         //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
         //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
         //{A, "Et ca me fait du bien."},
+  	{J,"641"},//TODO CHANGE VALUE LATER
 
         //>J'adore la foule!
   	{SWPM,"4"},
@@ -701,7 +717,7 @@ const Passage SCRPT[] = {
         {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
   	{SWPM,"2"},
         {A, "Enfin, je crois..."},
-  	{J,"1"}, //(jump branch)
+  	{J,"641"},//TODO CHANGE VALUE LATER
 
   //---
 
@@ -1187,24 +1203,24 @@ const Choice ListeChoix[]= {
   {"Ils vont pas te manger haha",238},
   {"J'ai oublie moi aussi",263},
   
-  {"Oui, ca fait serieux",1},
-  {"Non, soit decontract'",1},
-  {"Porte ce qui te plait",1},
+  {"Oui, ca fait serieux",282},
+  {"Non, soit decontract'",310},
+  {"Porte ce qui te plait",335},
   
-  {"Bien sur!",1},
-  {"Je ne saurais pas t'aider",1},
-	  {"Bon, si tu insiste",1},
+  {"Bien sur!",362},
+  {"Je ne saurais pas t'aider",374},
+	  {"Bon, si tu insiste",390},
   
-  {"Vanille",1},
-  {"Chocolat",1},
-  {"Fruit",1},
-  {"Peu importe",1},
-  	{"J'aime tous les parfums",1},
-  	{"Non pas trop",1},
+  {"Vanille",416},
+  {"Chocolat",433},
+  {"Fruit",468},
+  {"Peu importe",499},
+  	{"J'aime tous les parfums",504},
+  	{"Non pas trop",512},
   
-          {"Oui, je ne supporte pas",1},
-          {"Ca me derange pas vraiment",1},
-          {"J'adore la foule!",1},
+          {"Oui, je ne supporte pas",554},
+          {"Ca me derange pas vraiment",571},
+          {"J'adore la foule!",601},
   //--Branche glace
   {"Je comptais te l'offrir",1},
   {"Penses a me rembourser",1},
@@ -1237,10 +1253,10 @@ const Choice ListeChoix[]= {
   {"Oui mais proche de chez moi",1},
   {"Non pas du tout",1},
   
-  {"Et si on achetait une glace?",1},
+  {"Et si on achetait une glace?",403},
   
-  {"Je suis d'accord",1},
-  {"Je penses que c'est des films",1},
+  {"Je suis d'accord",448},
+  {"Je penses que c'est des films",457},
 
   
   
