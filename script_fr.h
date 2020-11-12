@@ -227,6 +227,7 @@ const Passage SCRPT[] = {
   {A, "Haha, merci beaucoup!           Mais tout n'est pas gagne."},
   {SWPM,"2"},
   {A, "Ils m'ont invite a un           entretien, mais..."},
+  {J,"204"},
 
   //>Qu'est-ce qu'ils t'ont dit?
   {SWPM,"1"},
@@ -271,6 +272,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Une chemise peut etre?          Ou un costume c'est mieux?"},
+  {J,"281"},
 
   //>Ils vont pas te manger haha
   {SWPM,"4"},
@@ -285,7 +287,7 @@ const Passage SCRPT[] = {
   {SWPEL,"1"},
   {SWPER,"1"},
   {A, "Je voudrais pas faire           n'importe quoi haha"},
-  {SWPM,"1"},
+  {SWPM,"2"},
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Par exemple, j'ai lu des        articles sur le sujet,"},
@@ -297,7 +299,8 @@ const Passage SCRPT[] = {
   {SWPER,"10"},
   {SWPM,"4"},
   {A, "Je dois vraiment mettre une     chemise? Tu en penses quoi?"},
-
+  {J,"281"},
+  
   //>J'ai oublie moi aussi
   {SWPM,"4"},
   {SWPEL,"3"},
@@ -1177,12 +1180,12 @@ const Choice ListeChoix[]= {
   	{"Je sais pas si ca m'aiderait",143},
   {"Je suis passe a autre chose",162},
   
-  {"Trop bien!",1},
-  {"Qu'est-ce qu'ils t'ont dit?",1},
+  {"Trop bien!",191},
+  {"Qu'est-ce qu'ils t'ont dit?",198},
   
-  {"C'est juste des questions",1},
-  {"Ils vont pas te manger haha",1},
-  {"J'ai oublie moi aussi",1},
+  {"C'est juste des questions",218},
+  {"Ils vont pas te manger haha",238},
+  {"J'ai oublie moi aussi",263},
   
   {"Oui, ca fait serieux",1},
   {"Non, soit decontract'",1},
