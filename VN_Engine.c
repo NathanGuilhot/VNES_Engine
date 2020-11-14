@@ -118,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 415; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 774; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -232,7 +232,7 @@ void init_draw_choice(){
   //Ok alors c'est super moche ce qui vas suivre, mais pour une raison que j'ignore la boucle for fait frizer tout le jeu; j'arrangerai ça plus tard mais là wallah je dois finir ce jeu
   
   txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][1]].txt;
-  vrambuf_put(NTADR_A(3,15+i+i),txt_choix, strlen(txt_choix));
+  vrambuf_put(NTADR_A(3,15+1+1),txt_choix, strlen(txt_choix));
   if (nb_choice>=2){
     
     txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][2]].txt;

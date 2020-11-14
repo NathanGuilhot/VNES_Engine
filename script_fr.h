@@ -604,7 +604,7 @@ const Passage SCRPT[] = {
         {SWPEL,"0"},
         {SWPER,"0"},
         {A, "D'ailleurs, tu as vu qu'ils     font une fete en ville?"},
-        {N, "En effet, en arrivant tu as     entendu de la musique."},
+        {N, "En effet, en arrivant tu as     cru entendre de la musique."},
   	{SWPM,"2"},
         {A, "De ce que j'ai compris, c'est   un grand festival annuel."},
         {SWPM,"1"},
@@ -640,7 +640,7 @@ const Passage SCRPT[] = {
         {A, "Mais c'est pas vraiment         la meme chose ici."},
         {SWPM,"4"},
         {A, "Et puis tu es la,               on peut se soutenir!"},
-	{J,"641"},//TODO CHANGE VALUE LATER
+	{J,"643"},//TODO CHANGE VALUE LATER
   
         //>Ca me derange pas vraiment
         {SWPM,"4"},
@@ -676,7 +676,7 @@ const Passage SCRPT[] = {
         //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
         //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
         //{A, "Et ca me fait du bien."},
-  	{J,"641"},//TODO CHANGE VALUE LATER
+  	{J,"643"},//TODO CHANGE VALUE LATER
 
         //>J'adore la foule!
   	{SWPM,"4"},
@@ -717,7 +717,7 @@ const Passage SCRPT[] = {
         {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
   	{SWPM,"2"},
         {A, "Enfin, je crois..."},
-  	{J,"641"},//TODO CHANGE VALUE LATER
+  	{J,"643"},//TODO CHANGE VALUE LATER
 
   //---
 
@@ -744,8 +744,8 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Ca te derange de m'avancer?"},
-  
   {C, "12"},
+  
   //>Je comptais te l'offrir
   {SWPM,"1"},
   {SWPEL,"9"},
@@ -759,6 +759,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Promis, des que je peux         je te rendrai la pareil!"},
+  {J, "714"},
 
   //>Penses a me rembourser
   {SWPM,"4"},
@@ -772,6 +773,7 @@ const Passage SCRPT[] = {
   {A, "Et c'est deja tres gentil       a toi de m'avancer!"},
   {SWPM,"4"},
   {A, "Promis, dans quelques jours     je pourrai te rembourser."},
+  {J, "714"},
 
   //>Franchement, t'abuses
   {SWPM,"4"},
@@ -786,6 +788,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Aller c'est promis,             c'est la derniere."},
+  {C, "22"},
   //>La derniere?
   {SWPM,"1"},
   {SWPEL,"10"},
@@ -795,11 +798,12 @@ const Passage SCRPT[] = {
   {SWPEL,"7"},
   {SWPER,"8"},
   {A, "(si j'arrete de craquer sur     des bibelots...)"},
+  {J, "714"},
 
   {SWPM,"4"},
   {SWPEL,"3"},
   {SWPER,"3"},
-  {A, "Tres bien, allons-y!"},
+  {A, "Allons-y!"},
   {H, "hide"},
   {SWPM,"1"},
   {SWPEL,"9"},
@@ -832,7 +836,7 @@ const Passage SCRPT[] = {
   {N, "Tu sors rapidement de la        boutique."},
   {N, "Personne."},
   {N, "Misere, Ange t'as surement      perdu en chemin."},
-  {N, "Plein d'inquietude,             tu entame tes recherches."},
+  {N, "L'esprit plein d'inquietude,    tu entame tes recherches."},
   {C, "14"},
   
   //>Demander a un passant
@@ -1219,23 +1223,23 @@ const Choice ListeChoix[]= {
   	{"Non pas trop",512},
   
           {"Oui, je ne supporte pas",554},
-          {"Ca me derange pas vraiment",571},
-          {"J'adore la foule!",601},
+          {"Ca me derange pas vraiment",573},
+          {"J'adore la foule!",604},
   //--Branche glace
-  {"Je comptais te l'offrir",1},
-  {"Penses a me rembourser",1},
-  {"Franchement, t'abuses",1},
+  {"Je comptais te l'offrir",667},
+  {"Penses a me rembourser",680},
+  {"Franchement, t'abuses",692},
   
-  {"Tout me fait envie!",1},
-  {"Prends ce que tu veux",1},
-  {"C'est vraiment cher!",1},
-  {"Tu veux pas une crepe plutot?",1},
+  {"Tout me fait envie!",737},
+  {"Prends ce que tu veux",737},
+  {"C'est vraiment cher!",737},
+  {"Tu veux pas une crepe plutot?",737},
   
-  {"Demander a un passant",1},
-  {"Chercher dans la foule",1},
-  {"Retourner a la plage",1},
+  {"Demander a un passant",744},
+  {"Chercher dans la foule",752},
+  {"Retourner a la plage",763},
   
-  {"Non c'est toi qui est la!",1},
+  {"Non c'est toi qui est la!",775},
   {"Qu'est-ce qui s'est passe?",1},
   {"Tu vas bien?",1},
   
@@ -1257,6 +1261,8 @@ const Choice ListeChoix[]= {
   
   {"Je suis d'accord",448},
   {"Je penses que c'est des films",457},
+  
+  {"La derniere?",705},
 
   
   
@@ -1296,4 +1302,5 @@ const char ChoiceCollection[][5] = {
   
   {1,52}, //et si on achetait une glace?
   {2,53,54}, //je suis d'accord/je penses que c'est des films
+  {1,55}, //La dernière ?
 };
