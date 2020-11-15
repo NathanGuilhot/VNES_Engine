@@ -640,7 +640,7 @@ const Passage SCRPT[] = {
         {A, "Mais c'est pas vraiment         la meme chose ici."},
         {SWPM,"4"},
         {A, "Et puis tu es la,               on peut se soutenir!"},
-	{J,"643"},//TODO CHANGE VALUE LATER
+	{J,"904"},
   
         //>Ca me derange pas vraiment
         {SWPM,"4"},
@@ -676,7 +676,7 @@ const Passage SCRPT[] = {
         //{A, "Mais cette raison que je suis   bien en ta compagnie."}, //Line à supprimer ? Doublon
         //{A, "Tu m'acceptes, meme quand       j'ai du mal a le faire."},
         //{A, "Et ca me fait du bien."},
-  	{J,"643"},//TODO CHANGE VALUE LATER
+  	{J,"904"},
 
         //>J'adore la foule!
   	{SWPM,"4"},
@@ -885,13 +885,15 @@ const Passage SCRPT[] = {
   {SWPER,"10"},
   {A, "Excuse-moi...                   je voulais pas t'inquieter."},
   {SWPM,"2"},
-  {A, "Je me suis sentie mal           au milieu de la foule."},
-
+  {A, "Je me suis sentï mal           au milieu de la foule."},
+  {J,"801"},	
+  
   //>Qu'est-ce qui s'est passe?
   {SWPM,"3"},
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Et bien...au milieu de la       foule, j'etais pas tres bien."},
+  {J,"801"},
 
   //>Tu vas bien?
   {SWPM,"4"},
@@ -966,6 +968,7 @@ const Passage SCRPT[] = {
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Encore pardon, la prochaine     fois je ferai attention!"},
+  {J,"892"},
 
   //>Au final, on a pu se retrouver
   {SWPM,"4"},
@@ -976,6 +979,7 @@ const Passage SCRPT[] = {
   {SWPEL,"9"},
   {SWPER,"10"},
   {A, "Encore pardon de t'avoir fais   soucis!"},
+  {J,"892"},
 
   //>Tu parles peu de ta mere
   {SWPM,"2"},
@@ -1072,8 +1076,9 @@ const Passage SCRPT[] = {
   {A, "Je te l'ai surement deja dit,   mais je t'envie beaucoup."},
   {SWPEL,"0"},
   {SWPER,"0"},
-  {SWPM,"2"},
+  {SWPM,"4"},
   {A, "C'est comme si tu vivais plus   que moi..."},
+  {J,"993"},
 
   //>Oui mais proche de chez moi
   {SWPM,"1"},
@@ -1093,6 +1098,7 @@ const Passage SCRPT[] = {
   {SWPEL,"0"},
   {SWPER,"0"},
   {A, "Au moins je peux rentrer        chez moi n'importe quand."},
+  {J,"993"},
 
   //>Non pas du tout
   {SWPM,"1"},
@@ -1240,22 +1246,22 @@ const Choice ListeChoix[]= {
   {"Retourner a la plage",763},
   
   {"Non c'est toi qui est la!",775},
-  {"Qu'est-ce qui s'est passe?",1},
-  {"Tu vas bien?",1},
+  {"Qu'est-ce qui s'est passe?",784},
+  {"Tu vas bien?",789},
   
-  {"L'habitude?",1},
+  {"L'habitude?",818},
   {"Et donc tu m'a attendu ici",1},
   
-  {"C'est un bon reflexe",1},
-  {"Au final on a pu se retrouver",1},
-  {"Tu parles peu de ta mere",1},
-  	{"Ce n'est rien",1},
+  {"C'est un bon reflexe",842},
+  {"Au final on a pu se retrouver",855},
+  {"Tu parles peu de ta mere",864},
+  	{"Ce n'est rien",879},
   
   
   //--Main and last branch (?)
-  {"Oui, partout dans le monde!",1},
-  {"Oui mais proche de chez moi",1},
-  {"Non pas du tout",1},
+  {"Oui, partout dans le monde!",935},
+  {"Oui mais proche de chez moi",956},
+  {"Non pas du tout",974},
   
   {"Et si on achetait une glace?",403},
   
@@ -1294,9 +1300,9 @@ const char ChoiceCollection[][5] = {
   
   {3,40,41,42},
   
-  {2,44,43},
+  {1,43,43}, //
   
-  {3,46,45,47},
+  {3,46,45,47}, 
     {1,48},
   {3,49,50,51},//où tu veux voyager
   
