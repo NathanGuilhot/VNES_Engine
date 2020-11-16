@@ -420,7 +420,7 @@ const Passage SCRPT[] = {
   {SWPM,"1"},
   {SWPEL,"9"},
   {SWPER,"10"},
-  {A, "C'est mieux que de compter sur mon sens de la mode."},
+  {A, "C'est mieux que de compter      sur mon sens de la mode."},
   {J, "394"},
 
   //>Je ne saurais pas t'aider
@@ -487,7 +487,7 @@ const Passage SCRPT[] = {
   {A, "Je choisissais toujours ce      parfum etant enfant!"},
   {SWPM,"1"},
   {A, "Et meme adulte d'ailleurs!"},
-  {J,"641"},
+  {J,"643"},
 
   //>Chocolat
   {SWPM,"4"},
@@ -526,7 +526,7 @@ const Passage SCRPT[] = {
     {A, "Peut etre que je n'ai juste     pas goute les bonnes marques"},
     {SWPM,"4"},
     {A, "Tu m'en recommandera un de      ces jours!"},
-    {J,"641"},
+    {J,"643"},
 
   //>Fruit
   {SWPM,"1"},
@@ -559,7 +559,7 @@ const Passage SCRPT[] = {
   {SWPEL,"1"},
   {SWPER,"1"},
   {A, "Excuse moi,                     je le fais pas expres."},
-  {J,"641"},
+  {J,"643"},
 
   //>Peu importe
   {SWPM,"2"},
@@ -575,7 +575,7 @@ const Passage SCRPT[] = {
         {SWPEL,"0"},
         {SWPER,"0"},
         {A, "On verras bien ce qu'il y a     et ce qui te fait envie."},
-  	{J,"641"},
+  	{J,"643"},
   	//jump ici
 
         //>Non pas trop
@@ -717,7 +717,7 @@ const Passage SCRPT[] = {
         {A, "Puis j'aurais du mal a trouver  des personnes comme moi."},
   	{SWPM,"2"},
         {A, "Enfin, je crois..."},
-  	{J,"643"},//TODO CHANGE VALUE LATER
+  	{J,"904"},//TODO CHANGE VALUE LATER
 
   //---
 
@@ -1029,7 +1029,7 @@ const Passage SCRPT[] = {
   {SWPM,"1"},
   {SWPEL,"6"},
   {SWPER,"6"},
-  {N, "Son regard se porta alors       vers la mer."},
+  {N, "Son attention se porte de       nouveau vers l'horizon."},
   {N, "Le jour est a present bien      avance,"},
   {N, "et le soleil descend            progressivement dans le ciel."},
   {N, "Ses rayons se refletent         etrangement sur l'eau bleue."},
@@ -1061,11 +1061,11 @@ const Passage SCRPT[] = {
   //>Oui, partout dans le monde!
   {SWPEL,"3"},
   {SWPER,"3"},
-  {A, "Woah, tu as vraiment le         gout de l'aventure!"},
+  {A, "Woah, tu as vraiment le gout    de l'aventure!"},
   {SWPM,"1"},
   {SWPEL,"0"},
   {SWPER,"0"},
-  {A, "Il doit y avoir tant a          voir dans le monde."},
+  {A, "Il doit y avoir tant a voir     dans le monde."},
   {SWPM,"4"},
   {A, "J'aime en apprendre plus en     regardant des documentaires,"},
   {SWPM,"1"},
