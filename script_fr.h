@@ -885,7 +885,8 @@ const Passage SCRPT[] = {
   {SWPER,"10"},
   {A, "Excuse-moi...                   je voulais pas t'inquieter."},
   {SWPM,"2"},
-  {A, "Je me suis sentï mal           au milieu de la foule."},
+  //{A, "Je me suis senti mal           au milieu de la foule."},
+  {A, "C'est que... au milieu de la    foule j'etais pas bien..."},
   {J,"801"},	
   
   //>Qu'est-ce qui s'est passe?

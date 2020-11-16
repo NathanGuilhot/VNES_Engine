@@ -96,7 +96,7 @@ const char btn_next[] = {0x16};
 //enum LABELS labl=START;
 
 enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st = DIAL;
+enum GAME_STATE game_st = GAME;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -118,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 550; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 0; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -131,7 +131,7 @@ bool d_pressed = false; //DOWN
 bool l_pressed = false;	//LEFT (gauche)
 bool r_pressed = false; //RIGHT (drouate)
 
-const bool debug_mode = true;
+const bool debug_mode = false;
 
 int i;
 char oam_id;
@@ -142,7 +142,7 @@ char sprEr=0;//Drouate
 char sprM=1;//Bouche
 
 int scrnBrightness = 0;
-bool dispAnge = true;
+bool dispAnge = false;
 
 char* index_txt = "indx";
 char nb_choice = 2;
