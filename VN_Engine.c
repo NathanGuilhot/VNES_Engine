@@ -118,7 +118,7 @@ struct Choice
 
 //-----Variables utiles
 
-unsigned int index = 402; //index dans le label en cours //328 max sans visage+choice
+unsigned int index = 0; //index dans le label en cours //328 max sans visage+choice
 unsigned char cursor = 1;
 
 unsigned char choice_sel=0;
@@ -460,7 +460,7 @@ void main(void)
   famitone_init(beach_shertigan_data);
   // set music callback function for NMI
   nmi_set_callback(famitone_update);
-  // play music
+  //play music
   //music_play(0);
 
   
