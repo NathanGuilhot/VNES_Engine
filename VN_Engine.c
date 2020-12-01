@@ -150,7 +150,7 @@ char* txt_choix = "choix";
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 
-#define FR 1 //bolean, 1 = FR 0 = EN
+#define FR 0 //bolean, 1 = FR 0 = EN
 //Visual Novel Content
 #if FR
   #include "script_fr.h"
@@ -348,9 +348,9 @@ void draw_game(){
   
   
   #if FR
-  vrambuf_put(NTADR_A(1,1),"fr",2);
+  vrambuf_put(NTADR_A(1,1),"Fr",2);
   #else
-  vrambuf_put(NTADR_A(5,16),"en",2);
+  vrambuf_put(NTADR_A(1,1),"En",2);
   #endif
   
   vrambuf_put(NTADR_A(1,26),"PRESS A",7);

@@ -1251,7 +1251,7 @@ const Choice ListeChoix[]= {
   {"Tu vas bien?",789},
   
   {"L'habitude?",818},
-  {"Et donc tu m'a attendu ici",1},
+  {"Et donc tu m'as attendu ici",1},
   
   {"C'est un bon reflexe",842},
   {"Au final on a pu se retrouver",855},
@@ -1267,7 +1267,7 @@ const Choice ListeChoix[]= {
   {"Et si on achetait une glace?",403},
   
   {"Je suis d'accord",448},
-  {"Je penses que c'est des films",457},
+  {"Je pense que c'est des films",457},
   
   {"La derniere?",705},
 
