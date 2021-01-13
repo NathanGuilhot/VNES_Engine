@@ -95,8 +95,8 @@ const char btn_next[] = {0x16};
 //enum LABELS {START, l_DIAL, l_NON, l_OUI /*LABELS_COUNT*/};
 //enum LABELS labl=START;
 
-enum GAME_STATE {GAME, DIAL, CHOICE, END};
-enum GAME_STATE game_st = GAME;
+enum GAME_STATE {MENU, DIAL, CHOICE, END};
+enum GAME_STATE game_st = MENU;
 
 enum DIAL_T {N/*NARRATOR*/, C/*CHOICE*/, F/*FIN*/, J/*JUMP*/
 ,SWPEL/*SWAP LEFT EYE*/,SWPER/*SWAP RIGHT EYE*/,SWPM/*SWAP MOUTH*/ ,A/*ANGE*/,H/*HIDE/SHOW*/};
@@ -150,7 +150,7 @@ char* txt_choix = "choix";
 
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 
-#define FR 0 //bolean, 1 = FR 0 = EN
+#define FR 1 //bolean, 1 = FR 0 = EN
 //Visual Novel Content
 #if FR
   #include "script_fr.h"
@@ -163,8 +163,6 @@ const char expr[]={ //liste des expressions
   211	,212	,213	,214	,215	, 216	,217	, 218	, 219	,220	,221
 //0'v'   1 :)  	2 :|   	3 :(   	4 :D  	5 D:    6 A_A	7 /	8 \	9 é	10 è
 };
-
-//Choix CHOIX[]={}
 
 // setup PPU and tables
 void setup_graphics() {
@@ -190,14 +188,6 @@ void clrscr() {
   ppu_on_bg();
 }
 
-void clrtxt(){ //???
-  vrambuf_clear();
-  ppu_off();
-  vram_adr(NTADR_A(2,24));
-  vram_fill(0, 64);
-  //vram_adr(0x0);
-  ppu_on_bg();
-}
 void draw_ange(){
   vrambuf_clear();
   ppu_off();
@@ -224,10 +214,10 @@ void draw_ange_face(){
 
 void init_draw_choice(){
   nb_choice = ChoiceCollection[c_atoi(SCRPT[index].c)][0];
-  //for (i=1;i<=nb_choice;i++){
+  for (i=1;i<=nb_choice;i++){
     	//txt_choix = ListeChoix[ChoiceCollection[c_atoi(SCRPT[index].c)][i]].txt;
   	//vrambuf_put(NTADR_A(4,15+i+i),txt_choix, strlen(txt_choix)); //ugly repetition
-  //}
+  }
  
   //Ok alors c'est super moche ce qui vas suivre, mais pour une raison que j'ignore la boucle for fait frizer tout le jeu; j'arrangerai ça plus tard mais là wallah je dois finir ce jeu
   
@@ -273,7 +263,7 @@ void draw_dial(){
 }
 
 void updt_dial(){
-  //Managing les passages spéciaux
+  //Managing special passages
   switch (SCRPT[index].t){
   case C:{
     clrscr();
@@ -306,6 +296,10 @@ void updt_dial(){
     index++;
     break;
   }
+  case F:{ //Fin
+    game_st = END;
+    index=0;
+  }
   }
   
   //update index_txt for debug
@@ -320,7 +314,6 @@ void updt_dial(){
         index+=1;
         cursor=1;
         //Remplace txt par blanc, trouver une autre soluce
-        // clrscr ?
         vrambuf_put(NTADR_A(2,24),"                                                                                ", 64+16); //clear the text
 
       	}
@@ -339,9 +332,8 @@ void updt_dial(){
   
 }
 
-void draw_game(){
-  //oam_spr(x,y,sprite,color,id)
-  //oam_id = oam_spr(40, 40, 8, 1, oam_id);
+void draw_menu(){
+
   vrambuf_put(NTADR_A(13,10),"~ANGE~",6);
   vrambuf_put(NTADR_A(3,11),"_________________________",25);
   vrambuf_put(NTADR_A(6,13),"date on the seaside",19);
@@ -355,14 +347,13 @@ void draw_game(){
   
   vrambuf_put(NTADR_A(1,26),"PRESS A",7);
   
-  //vrambuf_put(NTADR_A(25,24),"2020",4);
   vrambuf_put(NTADR_A(23,26),NIGHTEN_LOGO[0],7);
   vrambuf_put(NTADR_A(23,27),NIGHTEN_LOGO[1],7);
 
   
 }
 
-void updt_game(){
+void updt_menu(){
   if (pad&PAD_A){
     if (!a_pressed){
       game_st=DIAL;
@@ -379,9 +370,7 @@ void updt_game(){
 
 void draw_choice(){
   vrambuf_put(NTADR_A(1,17+choice_sel+choice_sel),">",1);
-  oam_id = oam_spr(112, 67, 211, 2, oam_id);
-  
-  
+  oam_id = oam_spr(112, 67, 211, 2, oam_id);  
 }
 
 void updt_choice(){
@@ -428,7 +417,7 @@ void updt_choice(){
 }
 
 void draw_end(){
-  //draw_dial();
+
   vrambuf_put(NTADR_A(14,10),"FIN",3);
   vrambuf_put(NTADR_A(5,20),"Merci d'avoir joue! *",21);
 
@@ -438,7 +427,7 @@ void draw_end(){
 void updt_end(){
  if (pad&PAD_A){
     if (!a_pressed){
-      game_st=GAME;
+      game_st=MENU;
       clrscr();
       a_pressed=true;
       index=0;
@@ -449,26 +438,21 @@ void updt_end(){
   } 
 }
 
-//-----------------------
-//---- MAIN LOOP !
+//---------------------------------------------------------\\
+//---- MAIN LOOP !-----------------------------------------\\
 
 void main(void)
 {
   setup_graphics();
-  
-  //beach sound
-  famitone_init(beach_shertigan_data);
-  // set music callback function for NMI
-  nmi_set_callback(famitone_update);
-  //play music
-  //music_play(0);
-
-  
-  // enable rendering
   ppu_on_all();
-  // infinite loop
+  
+  //beach sound (not yet working)
+  famitone_init(beach_shertigan_data);
+  nmi_set_callback(famitone_update);
+    
   if (debug_mode){draw_ange();};
   
+  // infinite loop
   while(1) {
     
     oam_id = 0;
@@ -476,13 +460,13 @@ void main(void)
     vrambuf_clear();
     set_vram_update(updbuf);
     
-    pad = pad_poll(0); //pad j1
+    pad = pad_poll(0); //update pad player 1
     
     switch (game_st){
-    case GAME:{
-      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Game",4);}
-      draw_game();
-      updt_game();
+    case MENU:{
+      if (debug_mode){vrambuf_put(NTADR_A(2,2),"Menu",4);}
+      draw_menu();
+      updt_menu();
       break;
 
     }
@@ -505,11 +489,7 @@ void main(void)
       updt_end();
       break;
     }
-    }
-    
-    
-    
-    
+    }    
   }
 }
 

@@ -420,7 +420,7 @@ const Passage SCRPT[] = {
 {A, "It's better than relying on my fashion sense."},
 {J, "394"},
 
-//>I can't help you
+//>I can't help you /////////----////////
 {SWPM, "4"},
 {SWPEL, "3"},
 {SWPER, "3"},
@@ -1185,8 +1185,8 @@ const Passage SCRPT[] = {
 {A, "....é£;...."},
 {H, "hide"},
 {N, " "},
-{N, "Lost connection..."},
-{N, "Angel has disconnected"}
+{N, "Connexion lost..."},
+{N, "Ange is disconnected"}
 };
 
 const Choice ListeChoix[]= {
@@ -1259,10 +1259,10 @@ const Choice ListeChoix[]= {
 {"Yes, but close to home",956},
 {"Not at all",974},
 
-{"How about an ice cream?",403},
+{"How about ice cream?",403},
 
-{"I agree",448},
-{"I think they're movies",457},
+{"Yeah, I agree",448},
+{"I think that's just you",457},
 
 {"The last?",705},
 
