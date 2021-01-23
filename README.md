@@ -6,7 +6,7 @@ The end goal is to make it generic enough so that the code can be reused as a ba
 [Open this project in 8bitworkshop](http://8bitworkshop.com/redir.html?platform=nes&githubURL=https%3A%2F%2Fgithub.com%2FNightenDushi%2FVNES_Engine&file=VN_Engine.c).
 
 **Feature**
-- ~500 lines of bad code, including the ascii art
+- ~600 lines of bad code, including the ascii art
 - TypeWritter effect
 - Choice
 - Jump to specific line
