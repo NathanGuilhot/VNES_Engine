@@ -8,9 +8,9 @@
 //                    | |     | |
 //                    | |     | |
 ////---------------------------------------------------\\
-//||						                                       ||
+//||						       ||
 //|| ~VИES_ENGINE - A VISUAL NOVEL ENGINE FOR THE NES~ ||
-//||						                                       ||
+//||						       ||
 //\\---------------------------------------------------//
 
 #include <stdlib.h>
@@ -39,6 +39,8 @@
 void __fastcall__ famitone_update(void);
 //#link "beach_shertigan.s"
 extern char beach_shertigan_data[];
+//#link "demosounds.s"
+extern char demo_sounds[];
 
 const char ANGESPR[][8] = {
     {0x00, 0x00, 0x81, 0x82, 0x83, 0x84, 0x85, 0x00},
@@ -548,6 +550,8 @@ void main(void)
   //beach sound (not yet working)
   famitone_init(beach_shertigan_data);
   nmi_set_callback(famitone_update);
+  
+  music_play(0);
 
   if (debug_mode)
   {
